@@ -1,0 +1,56 @@
+\hypertarget{namespacebfl_1_1utils}{}\section{bfl\+:\+:utils Namespace Reference}
+\label{namespacebfl_1_1utils}\index{bfl\+::utils@{bfl\+::utils}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename ... Args$>$ }\\std\+::unique\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{namespacebfl_1_1utils_ad9e9288a23debabef8314ac0d1006e66}{make\+\_\+unique}} (Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em Constructs an object of type T and wraps it in a std\+::unique\+\_\+ptr. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacebfl_1_1utils_a137b996032449ce79a5638cbcbb73966}{log\+\_\+sum\+\_\+exp}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&arguments)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the sum of exponentials. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacebfl_1_1utils_a137b996032449ce79a5638cbcbb73966}\label{namespacebfl_1_1utils_a137b996032449ce79a5638cbcbb73966}} 
+\index{bfl\+::utils@{bfl\+::utils}!log\+\_\+sum\+\_\+exp@{log\+\_\+sum\+\_\+exp}}
+\index{log\+\_\+sum\+\_\+exp@{log\+\_\+sum\+\_\+exp}!bfl\+::utils@{bfl\+::utils}}
+\subsubsection{\texorpdfstring{log\+\_\+sum\+\_\+exp()}{log\_sum\_exp()}}
+{\footnotesize\ttfamily double bfl\+::utils\+::log\+\_\+sum\+\_\+exp (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{arguments }\end{DoxyParamCaption})}
+
+
+
+Return the logarithm of the sum of exponentials. 
+
+
+
+Referenced by bfl\+::\+S\+I\+S\+::filtering\+Step(), and bfl\+::\+Resampling\+With\+Prior\+::resample().
+
+\mbox{\Hypertarget{namespacebfl_1_1utils_ad9e9288a23debabef8314ac0d1006e66}\label{namespacebfl_1_1utils_ad9e9288a23debabef8314ac0d1006e66}} 
+\index{bfl\+::utils@{bfl\+::utils}!make\+\_\+unique@{make\+\_\+unique}}
+\index{make\+\_\+unique@{make\+\_\+unique}!bfl\+::utils@{bfl\+::utils}}
+\subsubsection{\texorpdfstring{make\+\_\+unique()}{make\_unique()}}
+{\footnotesize\ttfamily template$<$typename T , typename ... Args$>$ \\
+std\+::unique\+\_\+ptr$<$T$>$ bfl\+::utils\+::make\+\_\+unique (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})}
+
+
+
+Constructs an object of type T and wraps it in a std\+::unique\+\_\+ptr. 
+
+Constructs a non-\/array type T. The arguments args are passed to the constructor of T. This overload only participates in overload resolution if T is not an array type. The function is equivalent to\+: unique\+\_\+ptr$<$\+T$>$(new T(std\+::forward$<$\+Args$>$(args)...))
+
+\begin{DoxyNote}{Note}
+Unlike std\+::make\+\_\+shared (which has std\+::allocate\+\_\+shared), std\+::make\+\_\+unique does not have an allocator-\/aware counterpart. A hypothetical allocate\+\_\+unique would be required to invent the deleter type D for the unique\+\_\+ptr$<$\+T,\+D$>$ it returns which would contain an allocator object and invoke both destroy and deallocate in its operator().
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & list of arguments with which an instance of T will be constructed.\\
+\hline
+\end{DoxyParams}
+May throw std\+::bad\+\_\+alloc or any exception thrown by the constructor of T. If an exception is thrown, this function has no effect.
+
+\begin{DoxyReturn}{Returns}
+std\+::unique\+\_\+ptr of an instance of type T. 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file utils.\+h.
+

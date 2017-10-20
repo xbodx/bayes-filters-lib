@@ -1,0 +1,235 @@
+The following snippet code shows how to run an Unscented Particle Filter (U\+PF) using the implementation provided by the library.~\newline
+
+
+
+\begin{DoxyCodeInclude}
+1 \textcolor{preprocessor}{#include <iostream>}
+2 \textcolor{preprocessor}{#include <memory>}
+3 
+4 \textcolor{preprocessor}{#include <\mbox{\hyperlink{AdditiveStateModel_8h}{BayesFilters/AdditiveStateModel.h}}>}
+5 \textcolor{preprocessor}{#include <\mbox{\hyperlink{GaussianLikelihood_8h}{BayesFilters/GaussianLikelihood.h}}>}
+6 \textcolor{preprocessor}{#include <\mbox{\hyperlink{GPFPrediction_8h}{BayesFilters/GPFPrediction.h}}>}
+7 \textcolor{preprocessor}{#include <\mbox{\hyperlink{GPFCorrection_8h}{BayesFilters/GPFCorrection.h}}>}
+8 \textcolor{preprocessor}{#include <\mbox{\hyperlink{InitSurveillanceAreaGrid_8h}{BayesFilters/InitSurveillanceAreaGrid.h}}>}
+9 \textcolor{preprocessor}{#include <\mbox{\hyperlink{Resampling_8h}{BayesFilters/Resampling.h}}>}
+10 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedLinearSensor_8h}{BayesFilters/SimulatedLinearSensor.h}}>}
+11 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedStateModel_8h}{BayesFilters/SimulatedStateModel.h}}>}
+12 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SIS_8h}{BayesFilters/SIS.h}}>}
+13 \textcolor{preprocessor}{#include <\mbox{\hyperlink{UKFPrediction_8h}{BayesFilters/UKFPrediction.h}}>}
+14 \textcolor{preprocessor}{#include <\mbox{\hyperlink{UKFCorrection_8h}{BayesFilters/UKFCorrection.h}}>}
+15 \textcolor{preprocessor}{#include <\mbox{\hyperlink{utils_8h}{BayesFilters/utils.h}}>}
+16 \textcolor{preprocessor}{#include <\mbox{\hyperlink{WhiteNoiseAcceleration_8h}{BayesFilters/WhiteNoiseAcceleration.h}}>}
+17 
+18 \textcolor{preprocessor}{#include <Eigen/Dense>}
+19 
+20 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacebfl}{bfl}};
+21 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceEigen}{Eigen}};
+22 
+23 
+24 \textcolor{keyword}{class }UPFSimulation : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1SIS}{SIS}}
+25 \{
+26 \textcolor{keyword}{public}:
+27     UPFSimulation
+28     (
+29         std::size\_t num\_particle,
+30         std::size\_t state\_size,
+31         std::size\_t simulation\_steps,
+32         \textcolor{comment}{/* Initial covariance of the Gaussian belief associated to each particle. */}
+33         Ref<MatrixXd> initial\_covariance,
+34         std::unique\_ptr<ParticleSetInitialization> initialization,
+35         std::unique\_ptr<PFPrediction> prediction,
+36         std::unique\_ptr<PFCorrection> correction,
+37         std::unique\_ptr<Resampling> resampling
+38     ) noexcept :
+39         \mbox{\hyperlink{classbfl_1_1SIS}{SIS}}(num\_particle, state\_size, std::move(initialization), std::move(prediction), std::move(
+      correction), std::move(resampling)),
+40         simulation\_steps\_(simulation\_steps),
+41         initial\_covariance\_(initial\_covariance)
+42     \{ \}
+43 
+44 \textcolor{keyword}{protected}:
+45     \textcolor{keywordtype}{bool} runCondition()\textcolor{keyword}{ override}
+46 \textcolor{keyword}{    }\{
+47         \textcolor{keywordflow}{if} (getFilteringStep() < simulation\_steps\_)
+48             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+49         \textcolor{keywordflow}{else}
+50             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+51     \}
+52 
+53     std::vector<std::string> log\_filenames(\textcolor{keyword}{const} std::string& prefix\_path, \textcolor{keyword}{const} std::string& prefix\_name)\textcolor{keyword}{
+       override}
+54 \textcolor{keyword}{    }\{
+55         std::vector<std::string> sis\_filenames = \mbox{\hyperlink{classbfl_1_1SIS_a805aef60946bfcaae4f65473dc7bd5ae}{SIS::log\_filenames}}(prefix\_path, 
+      prefix\_name);
+56 
+57         \textcolor{comment}{/* Add file names for logging of the conditional expected value. */}
+58         sis\_filenames.push\_back(prefix\_path + \textcolor{stringliteral}{"/"} + prefix\_name + \textcolor{stringliteral}{"\_mean"});
+59 
+60         \textcolor{keywordflow}{return}  sis\_filenames;
+61     \}
+62 
+63     VectorXd mean\_extraction(\textcolor{keyword}{const} \mbox{\hyperlink{classbfl_1_1ParticleSet}{ParticleSet}}& particles)\textcolor{keyword}{ const}
+64 \textcolor{keyword}{    }\{
+65         \textcolor{comment}{/* Extract the conditional expected value of the filtered state}
+66 \textcolor{comment}{           given all the measurements up to the current time step. */}
+67         \textcolor{keywordflow}{return} particles.\mbox{\hyperlink{classbfl_1_1ParticleSet_a85950583083c2903f4235801cc03130c}{state}}() * particles.\mbox{\hyperlink{classbfl_1_1GaussianMixture_ada5625de6a3e2f98afb5aaa148503dad}{weight}}().array().exp().matrix();
+68     \}
+69 
+70     \textcolor{keywordtype}{bool} initialization()\textcolor{keyword}{ override}
+71 \textcolor{keyword}{    }\{
+72         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classbfl_1_1SIS_a59e4f35fc05d2088e6dc13d622cafd1d}{SIS::initialization}}())
+73             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+74 
+75         \textcolor{comment}{/* Initialize initial mean and covariance for each particle. */}
+76         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < pred\_particle\_.components; i++)
+77         \{
+78             \textcolor{comment}{/* Set mean equal to the particle position. */}
+79             pred\_particle\_.mean(i) = pred\_particle\_.state(i);
+80 
+81             \textcolor{comment}{/* Set the covariance obtained within the ctor. */}
+82             pred\_particle\_.covariance(i) = initial\_covariance\_;
+83         \}
+84 
+85         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+86     \}
+87 
+88     \textcolor{keywordtype}{void} log()\textcolor{keyword}{ override}
+89 \textcolor{keyword}{    }\{
+90         VectorXd mean = mean\_extraction(cor\_particle\_);
+91 
+92         logger(pred\_particle\_.state().transpose(), pred\_particle\_.weight().transpose(),
+93                cor\_particle\_.state().transpose(), cor\_particle\_.weight().transpose(),
+94                mean.transpose());
+95     \}
+96 
+97 \textcolor{keyword}{private}:
+98     std::size\_t simulation\_steps\_;
+99 
+100     Eigen::MatrixXd initial\_covariance\_;
+101 \};
+102 
+103 
+104 \textcolor{keywordtype}{int} main()
+105 \{
+106     std::cout << \textcolor{stringliteral}{"Running an unscented particle filter on a simulated target."} << std::endl;
+107     std::cout << \textcolor{stringliteral}{"Data is logged in the test folder with prefix testUPF."} << std::endl;
+108 
+109     \textcolor{comment}{/* A set of parameters needed to run an unscented particle filter in a simulated environment. */}
+110     \textcolor{keywordtype}{double} surv\_x = 1000.0;
+111     \textcolor{keywordtype}{double} surv\_y = 1000.0;
+112     std::size\_t num\_particle\_x = 100;
+113     std::size\_t num\_particle\_y = 100;
+114     std::size\_t num\_particle = num\_particle\_x * num\_particle\_y;
+115     Vector4d initial\_state(10.0f, 0.0f, 10.0f, 0.0f);
+116     std::size\_t simulation\_time = 100;
+117     std::size\_t state\_size = 4;
+118 
+119     \textcolor{comment}{/* Unscented transform parameters.*/}
+120     \textcolor{keywordtype}{double} alpha = 1.0;
+121     \textcolor{keywordtype}{double} beta = 2.0;
+122     \textcolor{keywordtype}{double} kappa = 0.0;
+123 
+124     \textcolor{comment}{/* Step 1 - Initialization */}
+125 
+126     Matrix4d initial\_covariance;
+127     initial\_covariance << pow(0.05, 2), 0,            0,            0,
+128                           0,            pow(0.05, 2), 0,            0,
+129                           0,            0,            pow(0.01, 2), 0,
+130                           0,            0,            0,            pow(0.01, 2);
+131 
+132     \textcolor{comment}{/* Initialize particle initialization class. */}
+133     std::unique\_ptr<ParticleSetInitialization> grid\_initialization = 
+      utils::make\_unique<InitSurveillanceAreaGrid>(surv\_x, surv\_y, num\_particle\_x, num\_particle\_y);
+134 
+135 
+136     \textcolor{comment}{/* Step 2 - Prediction */}
+137 
+138     \textcolor{comment}{/* Step 2.1 - Define the state model. */}
+139 
+140     \textcolor{comment}{/* Initialize a white noise acceleration state model. */}
+141     \textcolor{keywordtype}{double} T = 1.0f;
+142     \textcolor{keywordtype}{double} tilde\_q = 10.0f;
+143 
+144     std::unique\_ptr<AdditiveStateModel> wna = utils::make\_unique<WhiteNoiseAcceleration>(T, tilde\_q);
+145 
+146     \textcolor{comment}{/* Step 2.2 - Define the prediction step */}
+147 
+148     \textcolor{comment}{/* Initialize the kalman particle filter prediction step that wraps a Gaussian prediction step,}
+149 \textcolor{comment}{       in this case an unscented kalman filter prediction step. */}
+150     std::unique\_ptr<GaussianPrediction> upf\_prediction = utils::make\_unique<UKFPrediction>(std::move(wna), 
+      state\_size, alpha, beta, kappa);
+151     std::unique\_ptr<PFPrediction> gpf\_prediction = utils::make\_unique<GPFPrediction>(std::move(
+      upf\_prediction));
+152 
+153 
+154     \textcolor{comment}{/* Step 3 - Correction */}
+155 
+156     \textcolor{comment}{/* Step 3.1 - Define where the measurement are originated from (simulated in this case). */}
+157 
+158     \textcolor{comment}{/* Initialize simulated target model with a white noise acceleration. */}
+159     std::unique\_ptr<StateModel> target\_model = utils::make\_unique<WhiteNoiseAcceleration>(T, tilde\_q);
+160     std::unique\_ptr<SimulatedStateModel> simulated\_state\_model = utils::make\_unique<SimulatedStateModel>(
+      std::move(target\_model), initial\_state, simulation\_time);
+161     simulated\_state\_model->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testUPF"});
+162 
+163     \textcolor{comment}{/* Initialize a measurement model (a linear sensor reading x and y coordinates). */}
+164     std::unique\_ptr<AdditiveMeasurementModel> simulated\_linear\_sensor = 
+      utils::make\_unique<SimulatedLinearSensor>(std::move(simulated\_state\_model));
+165     simulated\_linear\_sensor->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testUPF"});
+166 
+167 
+168     \textcolor{comment}{/* Step 3.2 - Define the likelihood model. */}
+169 
+170     \textcolor{comment}{/* Initialize an exponential likelihood as measurement likelihood. */}
+171     std::unique\_ptr<LikelihoodModel> exp\_likelihood = utils::make\_unique<GaussianLikelihood>();
+172 
+173     \textcolor{comment}{/* Step 3.3 - Define the correction step. */}
+174 
+175     \textcolor{comment}{/* An additional state model is required to make the transitionProbability of the state model available}
+176 \textcolor{comment}{       to the particle filter correction step. */}
+177     std::unique\_ptr<StateModel> transition\_probability\_model = utils::make\_unique<WhiteNoiseAcceleration>(T
+      , tilde\_q);
+178 
+179     \textcolor{comment}{/* Initialize the particle filter correction step that wraps a Guassian correction step,}
+180 \textcolor{comment}{       in this case an unscented kalman filter correction step. */}
+181     std::unique\_ptr<GaussianCorrection> upf\_correction = utils::make\_unique<UKFCorrection>(std::move(
+      simulated\_linear\_sensor), state\_size, alpha, beta, kappa);
+182     std::unique\_ptr<PFCorrection> gpf\_correction = utils::make\_unique<GPFCorrection>(std::move(
+      upf\_correction), std::move(exp\_likelihood), std::move(transition\_probability\_model));
+183 
+184 
+185     \textcolor{comment}{/* Step 4 - Resampling */}
+186 
+187     \textcolor{comment}{/* Initialize a resampling algorithm. */}
+188     std::unique\_ptr<Resampling> resampling = utils::make\_unique<Resampling>();
+189 
+190 
+191     \textcolor{comment}{/* Step 5 - Assemble the particle filter. */}
+192     std::cout << \textcolor{stringliteral}{"Constructing unscented particle filter..."} << std::flush;
+193     UPFSimulation upf(num\_particle, state\_size, simulation\_time, initial\_covariance, std::move(
+      grid\_initialization), std::move(gpf\_prediction), std::move(gpf\_correction), std::move(resampling));
+194     upf.enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testUPF"});
+195     std::cout << \textcolor{stringliteral}{"done!"} << std::endl;
+196 
+197 
+198     \textcolor{comment}{/* Step 6 - Prepare the filter to be run */}
+199     std::cout << \textcolor{stringliteral}{"Booting unscented particle filter..."} << std::flush;
+200     upf.boot();
+201     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+202 
+203 
+204     \textcolor{comment}{/* Step 7 - Run the filter and wait until it is closed */}
+205     \textcolor{comment}{/* Note that since this is a simulation, the filter will end upon simulation termination */}
+206     std::cout << \textcolor{stringliteral}{"Running unscented particle filter..."} << std::flush;
+207     upf.run();
+208     std::cout << \textcolor{stringliteral}{"waiting..."} << std::flush;
+209 
+210     \textcolor{keywordflow}{if} (!upf.wait())
+211         \textcolor{keywordflow}{return} EXIT\_FAILURE;
+212 
+213     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+214 
+215     \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+216 \}
+\end{DoxyCodeInclude}
+ 

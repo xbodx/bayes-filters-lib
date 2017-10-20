@@ -1,0 +1,159 @@
+The following snippet code shows how to run an Unscented Kalman Filter (KF) using the implementation provided by the library.~\newline
+
+
+
+\begin{DoxyCodeInclude}
+1 \textcolor{preprocessor}{#include <\mbox{\hyperlink{Gaussian_8h}{BayesFilters/Gaussian.h}}>}
+2 \textcolor{preprocessor}{#include <\mbox{\hyperlink{GaussianFilter_8h}{BayesFilters/GaussianFilter.h}}>}
+3 \textcolor{preprocessor}{#include <\mbox{\hyperlink{sigma__point_8h}{BayesFilters/sigma\_point.h}}>}
+4 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedLinearSensor_8h}{BayesFilters/SimulatedLinearSensor.h}}>}
+5 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedStateModel_8h}{BayesFilters/SimulatedStateModel.h}}>}
+6 \textcolor{preprocessor}{#include <\mbox{\hyperlink{UKFCorrection_8h}{BayesFilters/UKFCorrection.h}}>}
+7 \textcolor{preprocessor}{#include <\mbox{\hyperlink{UKFPrediction_8h}{BayesFilters/UKFPrediction.h}}>}
+8 \textcolor{preprocessor}{#include <\mbox{\hyperlink{utils_8h}{BayesFilters/utils.h}}>}
+9 \textcolor{preprocessor}{#include <\mbox{\hyperlink{WhiteNoiseAcceleration_8h}{BayesFilters/WhiteNoiseAcceleration.h}}>}
+10 
+11 \textcolor{preprocessor}{#include <Eigen/Dense>}
+12 
+13 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacebfl}{bfl}};
+14 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceEigen}{Eigen}};
+15 
+16 
+17 \textcolor{keyword}{class }UKFSimulation : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1GaussianFilter}{GaussianFilter}}
+18 \{
+19 \textcolor{keyword}{public}:
+20     UKFSimulation
+21     (
+22         \mbox{\hyperlink{classbfl_1_1Gaussian}{Gaussian}}& initial\_state,
+23         std::unique\_ptr<GaussianPrediction> prediction,
+24         std::unique\_ptr<GaussianCorrection> correction,
+25         std::size\_t simulation\_steps
+26     ) noexcept :
+27         \mbox{\hyperlink{classbfl_1_1GaussianFilter}{GaussianFilter}}(initial\_state, std::move(prediction), std::move(correction)),
+28         simulation\_steps\_(simulation\_steps)
+29     \{ \}
+30 
+31 \textcolor{keyword}{protected}:
+32     \textcolor{keywordtype}{bool} runCondition()\textcolor{keyword}{ override}
+33 \textcolor{keyword}{    }\{
+34         \textcolor{keywordflow}{if} (getFilteringStep() < simulation\_steps\_)
+35             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+36         \textcolor{keywordflow}{else}
+37             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+38     \}
+39 
+40 
+41     std::vector<std::string> log\_filenames(\textcolor{keyword}{const} std::string& prefix\_path, \textcolor{keyword}{const} std::string& prefix\_name)\textcolor{keyword}{
+       override}
+42 \textcolor{keyword}{    }\{
+43         \textcolor{keywordflow}{return} \{prefix\_path + \textcolor{stringliteral}{"/"} + prefix\_name + \textcolor{stringliteral}{"\_pred\_mean"},
+44                 prefix\_path + \textcolor{stringliteral}{"/"} + prefix\_name + \textcolor{stringliteral}{"\_cor\_mean"}\};
+45     \}
+46 
+47 
+48     \textcolor{keywordtype}{void} log()\textcolor{keyword}{ override}
+49 \textcolor{keyword}{    }\{
+50         logger(predicted\_state\_.mean().transpose(), corrected\_state\_.mean().transpose());
+51     \}
+52 
+53 \textcolor{keyword}{private}:
+54     std::size\_t simulation\_steps\_;
+55 \};
+56 
+57 
+58 \textcolor{keywordtype}{int} main()
+59 \{
+60     std::cout << \textcolor{stringliteral}{"Running a UKF filter on a simulated target."} << std::endl;
+61     std::cout << \textcolor{stringliteral}{"Data is logged in the test folder with prefix testUKF."} << std::endl;
+62 
+63     \textcolor{comment}{/* A set of parameters needed to run an unscented Kalman filter in a simulated environment. */}
+64     Vector4d initial\_simulated\_state(10.0f, 0.0f, 10.0f, 0.0f);
+65     std::size\_t simulation\_time = 100;
+66     \textcolor{comment}{/* Initialize unscented transform parameters. */}
+67     \textcolor{keywordtype}{double} alpha = 1.0;
+68     \textcolor{keywordtype}{double} beta = 2.0;
+69     \textcolor{keywordtype}{double} kappa = 0.0;
+70 
+71 
+72     \textcolor{comment}{/* Step 1 - Initialization */}
+73 
+74     std::size\_t state\_size = 4;
+75     \mbox{\hyperlink{classbfl_1_1Gaussian}{Gaussian}} initial\_state(state\_size);
+76     Vector4d initial\_mean(4.0f, 0.04f, 15.0f, 0.4f);
+77     Matrix4d initial\_covariance;
+78     initial\_covariance << pow(0.05, 2), 0,            0,            0,
+79                           0,            pow(0.05, 2), 0,            0,
+80                           0,            0,            pow(0.01, 2), 0,
+81                           0,            0,            0,            pow(0.01, 2);
+82     initial\_state.mean() = initial\_mean;
+83     initial\_state.covariance() = initial\_covariance;
+84 
+85 
+86     \textcolor{comment}{/* Step 2 - Prediction */}
+87 
+88     \textcolor{comment}{/* Step 2.1 - Define the state model. */}
+89 
+90     \textcolor{comment}{/* Initialize a white noise acceleration state model. */}
+91     \textcolor{keywordtype}{double} T = 1.0f;
+92     \textcolor{keywordtype}{double} tilde\_q = 10.0f;
+93 
+94     std::unique\_ptr<AdditiveStateModel> wna = utils::make\_unique<WhiteNoiseAcceleration>(T, tilde\_q);
+95 
+96     \textcolor{comment}{/* Step 2.2 - Define the prediction step. */}
+97 
+98     \textcolor{comment}{/* Initialize the unscented Kalman filter prediction step and pass the ownership of the state model */}
+99     std::unique\_ptr<UKFPrediction> ukf\_prediction = utils::make\_unique<UKFPrediction>(std::move(wna), 
+      state\_size, alpha, beta, kappa);
+100 
+101 
+102     \textcolor{comment}{/* Step 3 - Correction */}
+103 
+104     \textcolor{comment}{/* Step 3.1 - Define where the measurement are originated from (simulated in this case). */}
+105 
+106     \textcolor{comment}{/* Initialize simulated target model with a white noise acceleration. */}
+107     std::unique\_ptr<AdditiveStateModel> target\_model = utils::make\_unique<WhiteNoiseAcceleration>(T, 
+      tilde\_q);
+108     std::unique\_ptr<SimulatedStateModel> simulated\_state\_model = utils::make\_unique<SimulatedStateModel>(
+      std::move(target\_model), initial\_simulated\_state, simulation\_time);
+109     simulated\_state\_model->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testUKF"});
+110 
+111     \textcolor{comment}{/* Step 3.2 - Initialize a measurement model (a linear sensor reading x and y coordinates). */}
+112     std::unique\_ptr<AdditiveMeasurementModel> simulated\_linear\_sensor = 
+      utils::make\_unique<SimulatedLinearSensor>(std::move(simulated\_state\_model));
+113     simulated\_linear\_sensor->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testUKF"});
+114 
+115     \textcolor{comment}{/* Step 3.3 - Initialize the unscented Kalman filter correction step and pass the ownership of the
+       measurement model. */}
+116     std::unique\_ptr<UKFCorrection> ukf\_correction = utils::make\_unique<UKFCorrection>(std::move(
+      simulated\_linear\_sensor), state\_size, alpha, beta, kappa);
+117 
+118 
+119     \textcolor{comment}{/* Step 4 - Assemble the unscented Kalman filter. */}
+120     std::cout << \textcolor{stringliteral}{"Constructing unscented Kalman filter..."} << std::flush;
+121     UKFSimulation ukf(initial\_state, std::move(ukf\_prediction), std::move(ukf\_correction), simulation\_time)
+      ;
+122     ukf.enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testUKF"});
+123     std::cout << \textcolor{stringliteral}{"done!"} << std::endl;
+124 
+125 
+126     \textcolor{comment}{/* Step 5 - Boot the filter. */}
+127     std::cout << \textcolor{stringliteral}{"Booting unscented Kalman filter..."} << std::flush;
+128     ukf.boot();
+129     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+130 
+131 
+132     \textcolor{comment}{/* Step 6 - Run the filter and wait until it is closed. */}
+133     \textcolor{comment}{/* Note that since this is a simulation, the filter will end upon simulation termination. */}
+134     std::cout << \textcolor{stringliteral}{"Running unscented Kalman filter..."} << std::flush;
+135     ukf.run();
+136     std::cout << \textcolor{stringliteral}{"waiting..."} << std::flush;
+137 
+138     \textcolor{keywordflow}{if} (!ukf.wait())
+139         \textcolor{keywordflow}{return} EXIT\_FAILURE;
+140 
+141     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+142 
+143     \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+144 \}
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,17 @@
+<map id="/Users/Claudio/GitHub/bayes&#45;filters&#45;lib/src/BayesFilters/include/BayesFilters/SIS.h" name="/Users/Claudio/GitHub/bayes&#45;filters&#45;lib/src/BayesFilters/include/BayesFilters/SIS.h">
+<area shape="rect" id="node2" href="$ParticleFilter_8h.html" title="BayesFilters/ParticleFilter.h" alt="" coords="1263,105,1446,131"/>
+<area shape="rect" id="node14" href="$ParticleSet_8h.html" title="BayesFilters/ParticleSet.h" alt="" coords="1664,265,1838,291"/>
+<area shape="rect" id="node17" href="$PFCorrection_8h.html" title="BayesFilters/PFCorrection.h" alt="" coords="485,185,673,211"/>
+<area shape="rect" id="node29" href="$PFPrediction_8h.html" title="BayesFilters/PFPrediction.h" alt="" coords="1338,185,1524,211"/>
+<area shape="rect" id="node32" href="$Resampling_8h.html" title="BayesFilters/Resampling.h" alt="" coords="1785,185,1965,211"/>
+<area shape="rect" id="node3" href="$FilteringAlgorithm_8h.html" title="BayesFilters/FilteringAlgorithm.h" alt="" coords="873,345,1086,371"/>
+<area shape="rect" id="node13" href="$ParticleSetInitialization_8h.html" title="BayesFilters/ParticleSet\lInitialization.h" alt="" coords="1549,179,1712,217"/>
+<area shape="rect" id="node4" href="$Logger_8h.html" title="BayesFilters/Logger.h" alt="" coords="792,425,943,451"/>
+<area shape="rect" id="node15" href="$GaussianMixture_8h.html" title="BayesFilters/GaussianMixture.h" alt="" coords="1703,345,1912,371"/>
+<area shape="rect" id="node18" href="$LikelihoodModel_8h.html" title="BayesFilters/LikelihoodModel.h" alt="" coords="383,265,589,291"/>
+<area shape="rect" id="node19" href="$MeasurementModel_8h.html" title="BayesFilters/Measurement\lModel.h" alt="" coords="495,339,675,377"/>
+<area shape="rect" id="node20" href="$Data_8h.html" title="BayesFilters/Data.h" alt="" coords="408,425,546,451"/>
+<area shape="rect" id="node21" href="$any_8h.html" title="BayesFilters/any.h" alt="" coords="128,499,258,524"/>
+<area shape="rect" id="node30" href="$ExogenousModel_8h.html" title="BayesFilters/ExogenousModel.h" alt="" coords="1364,345,1576,371"/>
+<area shape="rect" id="node31" href="$StateModel_8h.html" title="BayesFilters/StateModel.h" alt="" coords="1262,265,1439,291"/>
+</map>

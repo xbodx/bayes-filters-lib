@@ -1,0 +1,12 @@
+<map id="/Users/Claudio/GitHub/bayes&#45;filters&#45;lib/src/BayesFilters/include/BayesFilters/SimulatedLinearSensor.h" name="/Users/Claudio/GitHub/bayes&#45;filters&#45;lib/src/BayesFilters/include/BayesFilters/SimulatedLinearSensor.h">
+<area shape="rect" id="node2" href="$LinearModel_8h.html" title="BayesFilters/LinearModel.h" alt="" coords="455,119,637,144"/>
+<area shape="rect" id="node22" href="$SimulatedStateModel_8h.html" title="BayesFilters/SimulatedState\lModel.h" alt="" coords="776,279,964,317"/>
+<area shape="rect" id="node3" href="$LinearMeasurementModel_8h.html" title="BayesFilters/LinearMeasurement\lModel.h" alt="" coords="355,192,572,231"/>
+<area shape="rect" id="node4" href="$AdditiveMeasurementModel_8h.html" title="BayesFilters/AdditiveMeasurement\lModel.h" alt="" coords="199,279,426,317"/>
+<area shape="rect" id="node5" href="$MeasurementModel_8h.html" title="BayesFilters/Measurement\lModel.h" alt="" coords="235,365,415,404"/>
+<area shape="rect" id="node6" href="$Data_8h.html" title="BayesFilters/Data.h" alt="" coords="504,452,642,477"/>
+<area shape="rect" id="node13" href="$Logger_8h.html" title="BayesFilters/Logger.h" alt="" coords="767,452,917,477"/>
+<area shape="rect" id="node7" href="$any_8h.html" title="BayesFilters/any.h" alt="" coords="126,525,256,551"/>
+<area shape="rect" id="node23" href="$Agent_8h.html" title="BayesFilters/Agent.h" alt="" coords="689,372,833,397"/>
+<area shape="rect" id="node24" href="$StateModel_8h.html" title="BayesFilters/StateModel.h" alt="" coords="488,372,665,397"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="bfl::SimulatedLinearSensor::freezeMeasurements" name="bfl::SimulatedLinearSensor::freezeMeasurements">
+<area shape="rect" id="node2" href="$namespacebfl_1_1any.html#a4ecb51ad57b3fa935cabdc0dcdcb4df1" title="Performs type&#45;safe access to the contained object. " alt="" coords="276,5,401,31"/>
+<area shape="rect" id="node3" href="$classbfl_1_1LinearModel.html#af248dfa32cd9145d87e84ddade6316ad" title="bfl::LinearModel::getNoise\lSample" alt="" coords="250,55,426,93"/>
+<area shape="rect" id="node4" href="$classbfl_1_1SimulatedLinearSensor.html#ab75bbe744d8516c97dfc90ad499b10e6" title="bfl::SimulatedLinearSensor::log" alt="" coords="235,117,441,143"/>
+<area shape="rect" id="node5" href="$classbfl_1_1Logger.html#a1033ff31398484f2132f84fd140da9e3" title="bfl::Logger::logger" alt="" coords="489,117,618,143"/>
+</map>

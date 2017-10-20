@@ -1,0 +1,79 @@
+\hypertarget{classbfl_1_1ExogenousModel}{}\section{bfl\+:\+:Exogenous\+Model Class Reference}
+\label{classbfl_1_1ExogenousModel}\index{bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}}
+
+
+{\ttfamily \#include $<$Exogenous\+Model.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classbfl_1_1ExogenousModel_a5d49c4215e05363a149e794bd69e7f1a}{$\sim$\+Exogenous\+Model}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classbfl_1_1ExogenousModel_a9f3ec7b8fa1a6c1bb4f5889ba85e6d91}{propagate}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&cur\+\_\+states, Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$ prop\+\_\+states)=0
+\item 
+virtual Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classbfl_1_1ExogenousModel_a417f98b64e17a14af2d57e583cb119ea}{get\+Exogenous\+Matrix}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{classbfl_1_1ExogenousModel_a240432e20121e83787c83de64360a58a}{set\+Property}} (const std\+::string \&property)=0
+\item 
+virtual std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ \mbox{\hyperlink{classbfl_1_1ExogenousModel_a68fef857e5d251be2865eb6fd7642f1a}{get\+Output\+Size}} () const =0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Exogenous\+Model.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbfl_1_1ExogenousModel_a5d49c4215e05363a149e794bd69e7f1a}\label{classbfl_1_1ExogenousModel_a5d49c4215e05363a149e794bd69e7f1a}} 
+\index{bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}!````~Exogenous\+Model@{$\sim$\+Exogenous\+Model}}
+\index{````~Exogenous\+Model@{$\sim$\+Exogenous\+Model}!bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}}
+\subsubsection{\texorpdfstring{$\sim$\+Exogenous\+Model()}{~ExogenousModel()}}
+{\footnotesize\ttfamily virtual bfl\+::\+Exogenous\+Model\+::$\sim$\+Exogenous\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 14 of file Exogenous\+Model.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbfl_1_1ExogenousModel_a417f98b64e17a14af2d57e583cb119ea}\label{classbfl_1_1ExogenousModel_a417f98b64e17a14af2d57e583cb119ea}} 
+\index{bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}!get\+Exogenous\+Matrix@{get\+Exogenous\+Matrix}}
+\index{get\+Exogenous\+Matrix@{get\+Exogenous\+Matrix}!bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}}
+\subsubsection{\texorpdfstring{get\+Exogenous\+Matrix()}{getExogenousMatrix()}}
+{\footnotesize\ttfamily virtual Eigen\+::\+Matrix\+Xd bfl\+::\+Exogenous\+Model\+::get\+Exogenous\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classbfl_1_1ExogenousModel_a68fef857e5d251be2865eb6fd7642f1a}\label{classbfl_1_1ExogenousModel_a68fef857e5d251be2865eb6fd7642f1a}} 
+\index{bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}!get\+Output\+Size@{get\+Output\+Size}}
+\index{get\+Output\+Size@{get\+Output\+Size}!bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}}
+\subsubsection{\texorpdfstring{get\+Output\+Size()}{getOutputSize()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ bfl\+::\+Exogenous\+Model\+::get\+Output\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform().
+
+\mbox{\Hypertarget{classbfl_1_1ExogenousModel_a9f3ec7b8fa1a6c1bb4f5889ba85e6d91}\label{classbfl_1_1ExogenousModel_a9f3ec7b8fa1a6c1bb4f5889ba85e6d91}} 
+\index{bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}!propagate@{propagate}}
+\index{propagate@{propagate}!bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}}
+\subsubsection{\texorpdfstring{propagate()}{propagate()}}
+{\footnotesize\ttfamily virtual void bfl\+::\+Exogenous\+Model\+::propagate (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&}]{cur\+\_\+states,  }\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$}]{prop\+\_\+states }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform().
+
+\mbox{\Hypertarget{classbfl_1_1ExogenousModel_a240432e20121e83787c83de64360a58a}\label{classbfl_1_1ExogenousModel_a240432e20121e83787c83de64360a58a}} 
+\index{bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}!set\+Property@{set\+Property}}
+\index{set\+Property@{set\+Property}!bfl\+::\+Exogenous\+Model@{bfl\+::\+Exogenous\+Model}}
+\subsubsection{\texorpdfstring{set\+Property()}{setProperty()}}
+{\footnotesize\ttfamily virtual bool bfl\+::\+Exogenous\+Model\+::set\+Property (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/include/\+Bayes\+Filters/\mbox{\hyperlink{ExogenousModel_8h}{Exogenous\+Model.\+h}}\end{DoxyCompactItemize}

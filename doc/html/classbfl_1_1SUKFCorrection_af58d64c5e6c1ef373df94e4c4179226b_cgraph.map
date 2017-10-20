@@ -1,0 +1,8 @@
+<map id="bfl::SUKFCorrection::correctStep" name="bfl::SUKFCorrection::correctStep">
+<area shape="rect" id="node2" href="$namespacebfl_1_1any.html#a4ecb51ad57b3fa935cabdc0dcdcb4df1" title="Performs type&#45;safe access to the contained object. " alt="" coords="212,5,337,31"/>
+<area shape="rect" id="node3" href="$classbfl_1_1GaussianMixture.html#a65a60ef46d16ac33196a09963bbccdee" title="bfl::GaussianMixture\l::covariance" alt="" coords="413,76,556,115"/>
+<area shape="rect" id="node4" href="$namespacebfl_1_1directional__statistics.html#a18bffca88c7ea5f4ea11d2ad910736fe" title="bfl::directional_statistics\l::directional_sub" alt="" coords="193,107,355,145"/>
+<area shape="rect" id="node5" href="$classbfl_1_1GaussianMixture.html#af4fd865a97ac27c72510cfbf9429bd97" title="bfl::GaussianMixture\l::mean" alt="" coords="413,227,556,265"/>
+<area shape="rect" id="node6" href="$namespacebfl_1_1sigma__point.html#ab919aca5fccc30ee2acd5cd966cd9dc9" title="bfl::sigma_point::sigma\l_point" alt="" coords="195,169,353,208"/>
+<area shape="rect" id="node7" href="$namespacebfl_1_1directional__statistics.html#af9984a4df2b3f6f0bc0c264783181123" title="bfl::directional_statistics\l::directional_add" alt="" coords="403,164,565,203"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="bfl::GPFCorrection::correctStep" name="bfl::GPFCorrection::correctStep">
+<area shape="rect" id="node2" href="$classbfl_1_1GaussianMixture.html#a65a60ef46d16ac33196a09963bbccdee" title="bfl::GaussianMixture\l::covariance" alt="" coords="185,5,328,44"/>
+<area shape="rect" id="node3" href="$classbfl_1_1GaussianMixture.html#af4fd865a97ac27c72510cfbf9429bd97" title="bfl::GaussianMixture\l::mean" alt="" coords="185,68,328,107"/>
+<area shape="rect" id="node4" href="$classbfl_1_1ParticleSet.html#a85950583083c2903f4235801cc03130c" title="bfl::ParticleSet::state" alt="" coords="185,131,329,156"/>
+<area shape="rect" id="node5" href="$classbfl_1_1GaussianMixture.html#ada5625de6a3e2f98afb5aaa148503dad" title="bfl::GaussianMixture\l::weight" alt="" coords="185,180,328,219"/>
+</map>

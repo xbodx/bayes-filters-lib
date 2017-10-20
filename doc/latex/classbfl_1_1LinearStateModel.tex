@@ -1,0 +1,198 @@
+\hypertarget{classbfl_1_1LinearStateModel}{}\section{bfl\+:\+:Linear\+State\+Model Class Reference}
+\label{classbfl_1_1LinearStateModel}\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+
+
+{\ttfamily \#include $<$Linear\+State\+Model.\+h$>$}
+
+
+
+Inheritance diagram for bfl\+:\+:Linear\+State\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classbfl_1_1LinearStateModel__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classbfl_1_1LinearStateModel_abe9426efcecc6b1c606f17e0e5101ee0}{$\sim$\+Linear\+State\+Model}} () noexcept
+\item 
+virtual void \mbox{\hyperlink{classbfl_1_1LinearStateModel_a7823383ddc1ed709b9399c712997f512}{propagate}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&cur\+\_\+states, Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$ mot\+\_\+states) override
+\item 
+virtual Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classbfl_1_1LinearStateModel_a58db2093c6d255b8d41dbf0f0c5c28e5}{get\+State\+Transition\+Matrix}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classbfl_1_1AdditiveStateModel_a9f145bf8c592fc0092d84421f26dbb8b}{motion}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&cur\+\_\+states, Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$ mot\+\_\+states) override
+\item 
+virtual Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classbfl_1_1StateModel_a78df4b39578345142fcfb18abaab2177}{get\+Jacobian}} ()
+\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classbfl_1_1StateModel_acb582cb7d41ec7b854ed1dbd8965b6fc}{get\+Transition\+Probability}} (const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&prev\+\_\+states, Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$ cur\+\_\+states)
+\item 
+virtual Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classbfl_1_1StateModel_a423c1fa86b9d60c8663dedc6cdcae276}{get\+Noise\+Covariance\+Matrix}} ()
+\item 
+virtual Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classbfl_1_1StateModel_acc6733af2dcba2a330bf7c59c3725e42}{get\+Noise\+Sample}} (const std\+::size\+\_\+t num)
+\item 
+virtual bool \mbox{\hyperlink{classbfl_1_1StateModel_ac86dcdad8f0bbfab39a23e592779feaa}{set\+Property}} (const std\+::string \&property)=0
+\item 
+virtual std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ \mbox{\hyperlink{classbfl_1_1StateModel_a6bf680b689389d959fc9ac46595e6dab}{get\+Output\+Size}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the linear and circular size of the output of the state equation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Linear\+State\+Model.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbfl_1_1LinearStateModel_abe9426efcecc6b1c606f17e0e5101ee0}\label{classbfl_1_1LinearStateModel_abe9426efcecc6b1c606f17e0e5101ee0}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!````~Linear\+State\+Model@{$\sim$\+Linear\+State\+Model}}
+\index{````~Linear\+State\+Model@{$\sim$\+Linear\+State\+Model}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{$\sim$\+Linear\+State\+Model()}{~LinearStateModel()}}
+{\footnotesize\ttfamily virtual bfl\+::\+Linear\+State\+Model\+::$\sim$\+Linear\+State\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 16 of file Linear\+State\+Model.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbfl_1_1StateModel_a78df4b39578345142fcfb18abaab2177}\label{classbfl_1_1StateModel_a78df4b39578345142fcfb18abaab2177}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!get\+Jacobian@{get\+Jacobian}}
+\index{get\+Jacobian@{get\+Jacobian}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+Jacobian()}{getJacobian()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd State\+Model\+::get\+Jacobian (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classbfl_1_1LTIStateModel_a5bdef1421c100bce7baa1961d2916fc3}{bfl\+::\+L\+T\+I\+State\+Model}}.
+
+
+
+Definition at line 7 of file State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1StateModel_a423c1fa86b9d60c8663dedc6cdcae276}\label{classbfl_1_1StateModel_a423c1fa86b9d60c8663dedc6cdcae276}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!get\+Noise\+Covariance\+Matrix@{get\+Noise\+Covariance\+Matrix}}
+\index{get\+Noise\+Covariance\+Matrix@{get\+Noise\+Covariance\+Matrix}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+Noise\+Covariance\+Matrix()}{getNoiseCovarianceMatrix()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd State\+Model\+::get\+Noise\+Covariance\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classbfl_1_1WhiteNoiseAcceleration_a453df5960973059b35ee8686dc12ab0d}{bfl\+::\+White\+Noise\+Acceleration}}, \mbox{\hyperlink{classbfl_1_1LTIStateModel_a60a5ab5f3013b771ddd73787edd8dcde}{bfl\+::\+L\+T\+I\+State\+Model}}, and \mbox{\hyperlink{classbfl_1_1StateModelDecorator_ae70700c1fad6b788b21722e57f2d0f6b}{bfl\+::\+State\+Model\+Decorator}}.
+
+
+
+Definition at line 19 of file State\+Model.\+cpp.
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform().
+
+\mbox{\Hypertarget{classbfl_1_1StateModel_acc6733af2dcba2a330bf7c59c3725e42}\label{classbfl_1_1StateModel_acc6733af2dcba2a330bf7c59c3725e42}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!get\+Noise\+Sample@{get\+Noise\+Sample}}
+\index{get\+Noise\+Sample@{get\+Noise\+Sample}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+Noise\+Sample()}{getNoiseSample()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd State\+Model\+::get\+Noise\+Sample (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classbfl_1_1WhiteNoiseAcceleration_a819bd0d5510c9863272b422ab33b7adc}{bfl\+::\+White\+Noise\+Acceleration}}, and \mbox{\hyperlink{classbfl_1_1StateModelDecorator_a6825b807be82c66feb8bbb62d240490b}{bfl\+::\+State\+Model\+Decorator}}.
+
+
+
+Definition at line 25 of file State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1StateModel_a6bf680b689389d959fc9ac46595e6dab}\label{classbfl_1_1StateModel_a6bf680b689389d959fc9ac46595e6dab}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!get\+Output\+Size@{get\+Output\+Size}}
+\index{get\+Output\+Size@{get\+Output\+Size}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+Output\+Size()}{getOutputSize()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ bfl\+::\+State\+Model\+::get\+Output\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [inherited]}}
+
+
+
+Returns the linear and circular size of the output of the state equation. 
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1WhiteNoiseAcceleration_ac3e447bf2f520b543c67d066f72423b7}{bfl\+::\+White\+Noise\+Acceleration}}, and \mbox{\hyperlink{classbfl_1_1StateModelDecorator_a2b2f00e6825e382587a2edbbba4569de}{bfl\+::\+State\+Model\+Decorator}}.
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform().
+
+\mbox{\Hypertarget{classbfl_1_1LinearStateModel_a58db2093c6d255b8d41dbf0f0c5c28e5}\label{classbfl_1_1LinearStateModel_a58db2093c6d255b8d41dbf0f0c5c28e5}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!get\+State\+Transition\+Matrix@{get\+State\+Transition\+Matrix}}
+\index{get\+State\+Transition\+Matrix@{get\+State\+Transition\+Matrix}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+State\+Transition\+Matrix()}{getStateTransitionMatrix()}}
+{\footnotesize\ttfamily virtual Eigen\+::\+Matrix\+Xd bfl\+::\+Linear\+State\+Model\+::get\+State\+Transition\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1WhiteNoiseAcceleration_aa304ad7f628e84c06393ba3835d2bb2f}{bfl\+::\+White\+Noise\+Acceleration}}, and \mbox{\hyperlink{classbfl_1_1LTIStateModel_a65d486fe684ebbd4970391809ccf2bd9}{bfl\+::\+L\+T\+I\+State\+Model}}.
+
+\mbox{\Hypertarget{classbfl_1_1StateModel_acb582cb7d41ec7b854ed1dbd8965b6fc}\label{classbfl_1_1StateModel_acb582cb7d41ec7b854ed1dbd8965b6fc}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!get\+Transition\+Probability@{get\+Transition\+Probability}}
+\index{get\+Transition\+Probability@{get\+Transition\+Probability}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+Transition\+Probability()}{getTransitionProbability()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector\+Xd State\+Model\+::get\+Transition\+Probability (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&}]{prev\+\_\+states,  }\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$}]{cur\+\_\+states }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classbfl_1_1WhiteNoiseAcceleration_a10d81273e59d14f7d7ce794533c122a8}{bfl\+::\+White\+Noise\+Acceleration}}.
+
+
+
+Definition at line 13 of file State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1AdditiveStateModel_a9f145bf8c592fc0092d84421f26dbb8b}\label{classbfl_1_1AdditiveStateModel_a9f145bf8c592fc0092d84421f26dbb8b}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!motion@{motion}}
+\index{motion@{motion}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{motion()}{motion()}}
+{\footnotesize\ttfamily void Additive\+State\+Model\+::motion (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&}]{cur\+\_\+states,  }\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$}]{mot\+\_\+states }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Implements \mbox{\hyperlink{classbfl_1_1StateModel_a34037bc30bc07667b76b5a719a65ab82}{bfl\+::\+State\+Model}}.
+
+
+
+Definition at line 8 of file Additive\+State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1LinearStateModel_a7823383ddc1ed709b9399c712997f512}\label{classbfl_1_1LinearStateModel_a7823383ddc1ed709b9399c712997f512}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!propagate@{propagate}}
+\index{propagate@{propagate}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{propagate()}{propagate()}}
+{\footnotesize\ttfamily void Linear\+State\+Model\+::propagate (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&}]{cur\+\_\+states,  }\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Matrix\+Xd $>$}]{mot\+\_\+states }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbfl_1_1StateModel_a39cd8c8c5adbd623884583b4a7a7415c}{bfl\+::\+State\+Model}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classbfl_1_1LTIStateModel_a0a736ef66903c2e598f0b86892a716aa}{bfl\+::\+L\+T\+I\+State\+Model}}.
+
+
+
+Definition at line 9 of file Linear\+State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1StateModel_ac86dcdad8f0bbfab39a23e592779feaa}\label{classbfl_1_1StateModel_ac86dcdad8f0bbfab39a23e592779feaa}} 
+\index{bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}!set\+Property@{set\+Property}}
+\index{set\+Property@{set\+Property}!bfl\+::\+Linear\+State\+Model@{bfl\+::\+Linear\+State\+Model}}
+\subsubsection{\texorpdfstring{set\+Property()}{setProperty()}}
+{\footnotesize\ttfamily virtual bool bfl\+::\+State\+Model\+::set\+Property (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [inherited]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1WhiteNoiseAcceleration_a0203b47074e0680852f53dcba8a7a627}{bfl\+::\+White\+Noise\+Acceleration}}, \mbox{\hyperlink{classbfl_1_1LTIStateModel_afc2264780111fe41b6a82e97bcb5e87c}{bfl\+::\+L\+T\+I\+State\+Model}}, and \mbox{\hyperlink{classbfl_1_1StateModelDecorator_ad292f3b665c1adf20a1f32dc8a065fec}{bfl\+::\+State\+Model\+Decorator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/include/\+Bayes\+Filters/\mbox{\hyperlink{LinearStateModel_8h}{Linear\+State\+Model.\+h}}\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/src/\mbox{\hyperlink{LinearStateModel_8cpp}{Linear\+State\+Model.\+cpp}}\end{DoxyCompactItemize}

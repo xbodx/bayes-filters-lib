@@ -1,0 +1,5 @@
+<map id="bfl::sigma_point::sigma_point" name="bfl::sigma_point::sigma_point">
+<area shape="rect" id="node2" href="$classbfl_1_1GaussianMixture.html#a65a60ef46d16ac33196a09963bbccdee" title="bfl::GaussianMixture\l::covariance" alt="" coords="221,5,364,44"/>
+<area shape="rect" id="node3" href="$namespacebfl_1_1directional__statistics.html#af9984a4df2b3f6f0bc0c264783181123" title="bfl::directional_statistics\l::directional_add" alt="" coords="211,68,373,107"/>
+<area shape="rect" id="node4" href="$classbfl_1_1GaussianMixture.html#af4fd865a97ac27c72510cfbf9429bd97" title="bfl::GaussianMixture\l::mean" alt="" coords="221,131,364,169"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="bfl::KFCorrection::correctStep" name="bfl::KFCorrection::correctStep">
+<area shape="rect" id="node2" href="$namespacebfl_1_1any.html#a4ecb51ad57b3fa935cabdc0dcdcb4df1" title="Performs type&#45;safe access to the contained object. " alt="" coords="191,5,316,31"/>
+<area shape="rect" id="node3" href="$classbfl_1_1GaussianMixture.html#a65a60ef46d16ac33196a09963bbccdee" title="bfl::GaussianMixture\l::covariance" alt="" coords="182,55,325,93"/>
+<area shape="rect" id="node4" href="$classbfl_1_1GaussianMixture.html#af4fd865a97ac27c72510cfbf9429bd97" title="bfl::GaussianMixture\l::mean" alt="" coords="182,117,325,156"/>
+</map>

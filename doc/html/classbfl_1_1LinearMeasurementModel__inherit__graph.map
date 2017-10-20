@@ -1,0 +1,8 @@
+<map id="bfl::LinearMeasurementModel" name="bfl::LinearMeasurementModel">
+<area shape="rect" id="node5" href="$classbfl_1_1LinearModel.html" title="bfl::LinearModel" alt="" coords="38,312,154,337"/>
+<area shape="rect" id="node7" href="$classbfl_1_1LTIMeasurementModel.html" title="bfl::LTIMeasurementModel" alt="" coords="179,312,358,337"/>
+<area shape="rect" id="node2" href="$classbfl_1_1AdditiveMeasurementModel.html" title="bfl::AdditiveMeasurement\lModel" alt="" coords="95,152,267,191"/>
+<area shape="rect" id="node3" href="$classbfl_1_1MeasurementModel.html" title="bfl::MeasurementModel" alt="" coords="101,79,262,104"/>
+<area shape="rect" id="node4" href="$classbfl_1_1Logger.html" title="bfl::Logger" alt="" coords="139,5,224,31"/>
+<area shape="rect" id="node6" href="$classbfl_1_1SimulatedLinearSensor.html" title="bfl::SimulatedLinearSensor" alt="" coords="5,385,187,411"/>
+</map>

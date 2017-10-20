@@ -1,0 +1,197 @@
+\hypertarget{classbfl_1_1PFCorrection}{}\section{bfl\+:\+:P\+F\+Correction Class Reference}
+\label{classbfl_1_1PFCorrection}\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+
+
+{\ttfamily \#include $<$P\+F\+Correction.\+h$>$}
+
+
+
+Inheritance diagram for bfl\+:\+:P\+F\+Correction\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbfl_1_1PFCorrection__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classbfl_1_1PFCorrection_aa26f1c91715ebccc1d3c25f673d32279}{$\sim$\+P\+F\+Correction}} () noexcept
+\item 
+void \mbox{\hyperlink{classbfl_1_1PFCorrection_a560666b2e7566a846cb4ce4684e195e0}{correct}} (const \mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&pred\+\_\+particles, \mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&cor\+\_\+particles)
+\item 
+bool \mbox{\hyperlink{classbfl_1_1PFCorrection_ab25e625ea12fe257e0eb85d465835e62}{skip}} (const bool status)
+\item 
+virtual void \mbox{\hyperlink{classbfl_1_1PFCorrection_aa84e757c694d4ad375cdd543d42ac34c}{set\+Likelihood\+Model}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbfl_1_1LikelihoodModel}{Likelihood\+Model}} $>$ observation\+\_\+model)=0
+\item 
+virtual void \mbox{\hyperlink{classbfl_1_1PFCorrection_a9844514568f65a0e5fa2cffadea460c6}{set\+Measurement\+Model}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbfl_1_1MeasurementModel}{Measurement\+Model}} $>$ measurement\+\_\+model)=0
+\item 
+virtual std\+::pair$<$ bool, Eigen\+::\+Vector\+Xd $>$ \mbox{\hyperlink{classbfl_1_1PFCorrection_ab6eca766077c4ab1db3417dab6c44d27}{get\+Likelihood}} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classbfl_1_1LikelihoodModel}{Likelihood\+Model}} \& \mbox{\hyperlink{classbfl_1_1PFCorrection_ad812d0b488e0882b246dd19d4f6818e1}{get\+Likelihood\+Model}} ()=0
+\item 
+virtual \mbox{\hyperlink{classbfl_1_1MeasurementModel}{Measurement\+Model}} \& \mbox{\hyperlink{classbfl_1_1PFCorrection_a891c7d498caffb4d11e5ebdaa475c683}{get\+Measurement\+Model}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classbfl_1_1PFCorrection_ae0413156a1258d88485e57a983c89af1}{correct\+Step}} (const \mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&pred\+\_\+particles, \mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&cor\+\_\+particles)=0
+\item 
+\mbox{\hyperlink{classbfl_1_1PFCorrection_ae4be8c44771f209d79c549305cb63dcf}{P\+F\+Correction}} () noexcept
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classbfl_1_1PFCorrection_aac7b1063a3207bd00547ad5490bbc935}{skip\+\_\+}} = false
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbfl_1_1PFCorrection_a58497dd469f7041f127774bccdc78022}{P\+F\+Correction\+Decorator}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file P\+F\+Correction.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_aa26f1c91715ebccc1d3c25f673d32279}\label{classbfl_1_1PFCorrection_aa26f1c91715ebccc1d3c25f673d32279}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!````~P\+F\+Correction@{$\sim$\+P\+F\+Correction}}
+\index{````~P\+F\+Correction@{$\sim$\+P\+F\+Correction}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{$\sim$\+P\+F\+Correction()}{~PFCorrection()}}
+{\footnotesize\ttfamily virtual bfl\+::\+P\+F\+Correction\+::$\sim$\+P\+F\+Correction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 21 of file P\+F\+Correction.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_ae4be8c44771f209d79c549305cb63dcf}\label{classbfl_1_1PFCorrection_ae4be8c44771f209d79c549305cb63dcf}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!P\+F\+Correction@{P\+F\+Correction}}
+\index{P\+F\+Correction@{P\+F\+Correction}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{P\+F\+Correction()}{PFCorrection()}}
+{\footnotesize\ttfamily P\+F\+Correction\+::\+P\+F\+Correction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 7 of file P\+F\+Correction.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_a560666b2e7566a846cb4ce4684e195e0}\label{classbfl_1_1PFCorrection_a560666b2e7566a846cb4ce4684e195e0}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!correct@{correct}}
+\index{correct@{correct}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{correct()}{correct()}}
+{\footnotesize\ttfamily void P\+F\+Correction\+::correct (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&}]{pred\+\_\+particles,  }\item[{\mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&}]{cor\+\_\+particles }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file P\+F\+Correction.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_ae0413156a1258d88485e57a983c89af1}\label{classbfl_1_1PFCorrection_ae0413156a1258d88485e57a983c89af1}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!correct\+Step@{correct\+Step}}
+\index{correct\+Step@{correct\+Step}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{correct\+Step()}{correctStep()}}
+{\footnotesize\ttfamily virtual void bfl\+::\+P\+F\+Correction\+::correct\+Step (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&}]{pred\+\_\+particles,  }\item[{\mbox{\hyperlink{classbfl_1_1ParticleSet}{bfl\+::\+Particle\+Set}} \&}]{cor\+\_\+particles }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1GPFCorrection_a291a05d78f7f2ee835140bfe4995a2bb}{bfl\+::\+G\+P\+F\+Correction}}, \mbox{\hyperlink{classbfl_1_1BoostrapCorrection_a493eed345120c5babb0f3591d9c7c854}{bfl\+::\+Boostrap\+Correction}}, and \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator_a83bb9ac8ba168f99f211973ae634391a}{bfl\+::\+P\+F\+Correction\+Decorator}}.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_ab6eca766077c4ab1db3417dab6c44d27}\label{classbfl_1_1PFCorrection_ab6eca766077c4ab1db3417dab6c44d27}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!get\+Likelihood@{get\+Likelihood}}
+\index{get\+Likelihood@{get\+Likelihood}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{get\+Likelihood()}{getLikelihood()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$bool, Eigen\+::\+Vector\+Xd$>$ bfl\+::\+P\+F\+Correction\+::get\+Likelihood (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1GPFCorrection_a0df1185be7731e9077eec265b8d6ff8e}{bfl\+::\+G\+P\+F\+Correction}}, \mbox{\hyperlink{classbfl_1_1BoostrapCorrection_a18ad4ccfd9d7cf008011cbc79a0cea8f}{bfl\+::\+Boostrap\+Correction}}, and \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator_a019f207b8348f5f61e700e8a4ca38bfd}{bfl\+::\+P\+F\+Correction\+Decorator}}.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_ad812d0b488e0882b246dd19d4f6818e1}\label{classbfl_1_1PFCorrection_ad812d0b488e0882b246dd19d4f6818e1}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!get\+Likelihood\+Model@{get\+Likelihood\+Model}}
+\index{get\+Likelihood\+Model@{get\+Likelihood\+Model}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{get\+Likelihood\+Model()}{getLikelihoodModel()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classbfl_1_1LikelihoodModel}{Likelihood\+Model}}\& bfl\+::\+P\+F\+Correction\+::get\+Likelihood\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1GPFCorrection_afa1e971c9b618c50bd98f1d5774cff3a}{bfl\+::\+G\+P\+F\+Correction}}, \mbox{\hyperlink{classbfl_1_1BoostrapCorrection_aae2f5698ba37895b6193f51441f96f38}{bfl\+::\+Boostrap\+Correction}}, and \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator_ae58be7d0fedf9b56afb994211fb4ee6a}{bfl\+::\+P\+F\+Correction\+Decorator}}.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_a891c7d498caffb4d11e5ebdaa475c683}\label{classbfl_1_1PFCorrection_a891c7d498caffb4d11e5ebdaa475c683}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!get\+Measurement\+Model@{get\+Measurement\+Model}}
+\index{get\+Measurement\+Model@{get\+Measurement\+Model}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{get\+Measurement\+Model()}{getMeasurementModel()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classbfl_1_1MeasurementModel}{Measurement\+Model}}\& bfl\+::\+P\+F\+Correction\+::get\+Measurement\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1BoostrapCorrection_a4d11bb3e7e27dcd62bb7e1b5df83c8db}{bfl\+::\+Boostrap\+Correction}}, \mbox{\hyperlink{classbfl_1_1GPFCorrection_a670298795b61fab434eefd192b7fe81f}{bfl\+::\+G\+P\+F\+Correction}}, and \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator_a3d5b289a95cf6623922153b469755e80}{bfl\+::\+P\+F\+Correction\+Decorator}}.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_aa84e757c694d4ad375cdd543d42ac34c}\label{classbfl_1_1PFCorrection_aa84e757c694d4ad375cdd543d42ac34c}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!set\+Likelihood\+Model@{set\+Likelihood\+Model}}
+\index{set\+Likelihood\+Model@{set\+Likelihood\+Model}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{set\+Likelihood\+Model()}{setLikelihoodModel()}}
+{\footnotesize\ttfamily virtual void bfl\+::\+P\+F\+Correction\+::set\+Likelihood\+Model (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbfl_1_1LikelihoodModel}{Likelihood\+Model}} $>$}]{observation\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1BoostrapCorrection_a75d770c17ac4142833c926e9e6dc32db}{bfl\+::\+Boostrap\+Correction}}, and \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator_ab1065f8e47e4e51bc846b2d693b4bb88}{bfl\+::\+P\+F\+Correction\+Decorator}}.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_a9844514568f65a0e5fa2cffadea460c6}\label{classbfl_1_1PFCorrection_a9844514568f65a0e5fa2cffadea460c6}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!set\+Measurement\+Model@{set\+Measurement\+Model}}
+\index{set\+Measurement\+Model@{set\+Measurement\+Model}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{set\+Measurement\+Model()}{setMeasurementModel()}}
+{\footnotesize\ttfamily virtual void bfl\+::\+P\+F\+Correction\+::set\+Measurement\+Model (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbfl_1_1MeasurementModel}{Measurement\+Model}} $>$}]{measurement\+\_\+model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1BoostrapCorrection_af6e02e5d6e6426cbee2825a77c79da43}{bfl\+::\+Boostrap\+Correction}}, and \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator_a6e96dbb6591e44d9ebaa186c6e50569b}{bfl\+::\+P\+F\+Correction\+Decorator}}.
+
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_ab25e625ea12fe257e0eb85d465835e62}\label{classbfl_1_1PFCorrection_ab25e625ea12fe257e0eb85d465835e62}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!skip@{skip}}
+\index{skip@{skip}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{skip()}{skip()}}
+{\footnotesize\ttfamily bool P\+F\+Correction\+::skip (\begin{DoxyParamCaption}\item[{const bool}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file P\+F\+Correction.\+cpp.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_a58497dd469f7041f127774bccdc78022}\label{classbfl_1_1PFCorrection_a58497dd469f7041f127774bccdc78022}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!P\+F\+Correction\+Decorator@{P\+F\+Correction\+Decorator}}
+\index{P\+F\+Correction\+Decorator@{P\+F\+Correction\+Decorator}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{P\+F\+Correction\+Decorator}{PFCorrectionDecorator}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator}{P\+F\+Correction\+Decorator}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 51 of file P\+F\+Correction.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classbfl_1_1PFCorrection_aac7b1063a3207bd00547ad5490bbc935}\label{classbfl_1_1PFCorrection_aac7b1063a3207bd00547ad5490bbc935}} 
+\index{bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}!skip\+\_\+@{skip\+\_\+}}
+\index{skip\+\_\+@{skip\+\_\+}!bfl\+::\+P\+F\+Correction@{bfl\+::\+P\+F\+Correction}}
+\subsubsection{\texorpdfstring{skip\+\_\+}{skip\_}}
+{\footnotesize\ttfamily bool bfl\+::\+P\+F\+Correction\+::skip\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 49 of file P\+F\+Correction.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/include/\+Bayes\+Filters/\mbox{\hyperlink{PFCorrection_8h}{P\+F\+Correction.\+h}}\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/src/\mbox{\hyperlink{PFCorrection_8cpp}{P\+F\+Correction.\+cpp}}\end{DoxyCompactItemize}

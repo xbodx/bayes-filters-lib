@@ -1,0 +1,288 @@
+\hypertarget{namespacebfl_1_1sigma__point}{}\section{bfl\+:\+:sigma\+\_\+point Namespace Reference}
+\label{namespacebfl_1_1sigma__point}\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacebfl_1_1sigma__point_aa482c1c98a2280cd8f7635ba81898b4e}{Output\+Size}} = std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$
+\begin{DoxyCompactList}\small\item\em A Function\+Evaluation return. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{namespacebfl_1_1sigma__point_a6b412638c2556e4c1f84ba10965f785e}{Function\+Evaluation}} = std\+::function$<$ std\+::tuple$<$ bool, \mbox{\hyperlink{namespacebfl_af6b103c6821db1b54452f776fdd9dd02}{bfl\+::\+Data}}, \mbox{\hyperlink{namespacebfl_1_1sigma__point_aa482c1c98a2280cd8f7635ba81898b4e}{Output\+Size}} $>$(const Eigen\+::\+Ref$<$ const Eigen\+::\+Matrix\+Xd $>$ \&)$>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacebfl_1_1sigma__point_a2cdca209c158edd6440c2f077b345799}{unscented\+\_\+weights}} (const std\+::size\+\_\+t n, const double alpha, const double beta, const double kappa, Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ weight\+\_\+mean, Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$ weight\+\_\+covariance, double \&c)
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{namespacebfl_1_1sigma__point_ab919aca5fccc30ee2acd5cd966cd9dc9}{sigma\+\_\+point}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const double c)
+\item 
+std\+::tuple$<$ bool, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_afe170453152d4f96db4dad71bd9be9a3}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&input, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{namespacebfl_1_1sigma__point_a6b412638c2556e4c1f84ba10965f785e}{Function\+Evaluation}} function)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_a49b40777ee901dfbe3752e8f165fb439}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} \&state\+\_\+model)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_a9b4d661460ac0ad28493ae144a6ccee4}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} \&state\+\_\+model, \mbox{\hyperlink{classbfl_1_1ExogenousModel}{Exogenous\+Model}} \&exogenous\+\_\+model)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_ab1a8018531dbd8a28c08dd3418d1976d}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{classbfl_1_1AdditiveStateModel}{Additive\+State\+Model}} \&state\+\_\+model)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_aa14b7405b4800c5382d402b2446f89c6}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{classbfl_1_1AdditiveStateModel}{Additive\+State\+Model}} \&state\+\_\+model, \mbox{\hyperlink{classbfl_1_1ExogenousModel}{Exogenous\+Model}} \&exogenous\+\_\+model)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_ad1df67122c8b838ae669d1f2e0665481}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{classbfl_1_1ExogenousModel}{Exogenous\+Model}} \&exogenous\+\_\+model)
+\item 
+std\+::tuple$<$ bool, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_a5b51d83e121121ecc6d65e9e5e7d6859}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{classbfl_1_1MeasurementModel}{Measurement\+Model}} \&meas\+\_\+model)
+\item 
+std\+::tuple$<$ bool, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Eigen\+::\+Matrix\+Xd $>$ \mbox{\hyperlink{namespacebfl_1_1sigma__point_a27f6087b127407402338b68bf7853ae6}{unscented\+\_\+transform}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&state, const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&weight, \mbox{\hyperlink{classbfl_1_1AdditiveMeasurementModel}{Additive\+Measurement\+Model}} \&meas\+\_\+model)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_a6b412638c2556e4c1f84ba10965f785e}\label{namespacebfl_1_1sigma__point_a6b412638c2556e4c1f84ba10965f785e}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!Function\+Evaluation@{Function\+Evaluation}}
+\index{Function\+Evaluation@{Function\+Evaluation}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{Function\+Evaluation}{FunctionEvaluation}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacebfl_1_1sigma__point_a6b412638c2556e4c1f84ba10965f785e}{bfl\+::sigma\+\_\+point\+::\+Function\+Evaluation}} = typedef std\+::function$<$std\+::tuple$<$bool, \mbox{\hyperlink{namespacebfl_af6b103c6821db1b54452f776fdd9dd02}{bfl\+::\+Data}}, \mbox{\hyperlink{namespacebfl_1_1sigma__point_aa482c1c98a2280cd8f7635ba81898b4e}{Output\+Size}}$>$(const Eigen\+::\+Ref$<$const Eigen\+::\+Matrix\+Xd$>$\&)$>$}
+
+
+
+Definition at line 28 of file sigma\+\_\+point.\+h.
+
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_aa482c1c98a2280cd8f7635ba81898b4e}\label{namespacebfl_1_1sigma__point_aa482c1c98a2280cd8f7635ba81898b4e}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!Output\+Size@{Output\+Size}}
+\index{Output\+Size@{Output\+Size}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{Output\+Size}{OutputSize}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacebfl_1_1sigma__point_aa482c1c98a2280cd8f7635ba81898b4e}{bfl\+::sigma\+\_\+point\+::\+Output\+Size}} = typedef std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$}
+
+
+
+A Function\+Evaluation return. 
+
+
+\begin{DoxyItemize}
+\item a boolean indicating if the evaluation was successful
+\item the output data in the form of \mbox{\hyperlink{namespacebfl_af6b103c6821db1b54452f776fdd9dd02}{bfl\+::\+Data}}
+\item the output size as a pair of std\+::size\+\_\+t indicating linear and circular size 
+\end{DoxyItemize}
+
+Definition at line 27 of file sigma\+\_\+point.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_ab919aca5fccc30ee2acd5cd966cd9dc9}\label{namespacebfl_1_1sigma__point_ab919aca5fccc30ee2acd5cd966cd9dc9}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!sigma\+\_\+point@{sigma\+\_\+point}}
+\index{sigma\+\_\+point@{sigma\+\_\+point}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{sigma\+\_\+point()}{sigma\_point()}}
+{\footnotesize\ttfamily Matrix\+Xd bfl\+::sigma\+\_\+point\+::sigma\+\_\+point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const double}]{c }\end{DoxyParamCaption})}
+
+
+
+Definition at line 57 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+Gaussian\+Mixture\+::components, bfl\+::\+Gaussian\+Mixture\+::covariance(), bfl\+::\+Gaussian\+Mixture\+::dim, bfl\+::\+Gaussian\+Mixture\+::dim\+\_\+circular, bfl\+::\+Gaussian\+Mixture\+::dim\+\_\+linear, bfl\+::\+Gaussian\+Mixture\+::dim\+\_\+noise, bfl\+::directional\+\_\+statistics\+::directional\+\_\+add(), and bfl\+::\+Gaussian\+Mixture\+::mean().
+
+
+
+Referenced by bfl\+::\+S\+U\+K\+F\+Correction\+::correct\+Step(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_ab919aca5fccc30ee2acd5cd966cd9dc9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_afe170453152d4f96db4dad71bd9be9a3}\label{namespacebfl_1_1sigma__point_afe170453152d4f96db4dad71bd9be9a3}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily std\+::tuple$<$ bool, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{input,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{namespacebfl_1_1sigma__point_a6b412638c2556e4c1f84ba10965f785e}{Function\+Evaluation}}}]{function }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::any\+::any\+\_\+cast(), bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::c, bfl\+::\+Gaussian\+Mixture\+::components, bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::covariance, bfl\+::\+Gaussian\+Mixture\+::dim, bfl\+::\+Gaussian\+Mixture\+::dim\+\_\+circular, bfl\+::\+Gaussian\+Mixture\+::dim\+\_\+linear, bfl\+::directional\+\_\+statistics\+::directional\+\_\+mean(), bfl\+::directional\+\_\+statistics\+::directional\+\_\+sub(), bfl\+::\+Gaussian\+Mixture\+::mean(), bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::mean, and sigma\+\_\+point().
+
+
+
+Referenced by bfl\+::\+U\+K\+F\+Correction\+::correct\+Step(), bfl\+::\+U\+K\+F\+Prediction\+::predict\+Step(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_afe170453152d4f96db4dad71bd9be9a3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_a49b40777ee901dfbe3752e8f165fb439}\label{namespacebfl_1_1sigma__point_a49b40777ee901dfbe3752e8f165fb439}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} \&}]{state\+\_\+model }\end{DoxyParamCaption})}
+
+
+
+Definition at line 143 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+State\+Model\+::get\+Output\+Size(), bfl\+::\+State\+Model\+::motion(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_a49b40777ee901dfbe3752e8f165fb439_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_a9b4d661460ac0ad28493ae144a6ccee4}\label{namespacebfl_1_1sigma__point_a9b4d661460ac0ad28493ae144a6ccee4}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} \&}]{state\+\_\+model,  }\item[{\mbox{\hyperlink{classbfl_1_1ExogenousModel}{Exogenous\+Model}} \&}]{exogenous\+\_\+model }\end{DoxyParamCaption})}
+
+
+
+Definition at line 166 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+State\+Model\+::get\+Output\+Size(), bfl\+::\+State\+Model\+::motion(), bfl\+::\+Exogenous\+Model\+::propagate(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_a9b4d661460ac0ad28493ae144a6ccee4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_ab1a8018531dbd8a28c08dd3418d1976d}\label{namespacebfl_1_1sigma__point_ab1a8018531dbd8a28c08dd3418d1976d}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{classbfl_1_1AdditiveStateModel}{Additive\+State\+Model}} \&}]{state\+\_\+model }\end{DoxyParamCaption})}
+
+
+
+Definition at line 194 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+Gaussian\+Mixture\+::components, bfl\+::\+Gaussian\+Mixture\+::covariance(), bfl\+::\+State\+Model\+::get\+Noise\+Covariance\+Matrix(), bfl\+::\+State\+Model\+::get\+Output\+Size(), bfl\+::\+State\+Model\+::propagate(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_ab1a8018531dbd8a28c08dd3418d1976d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_aa14b7405b4800c5382d402b2446f89c6}\label{namespacebfl_1_1sigma__point_aa14b7405b4800c5382d402b2446f89c6}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{classbfl_1_1AdditiveStateModel}{Additive\+State\+Model}} \&}]{state\+\_\+model,  }\item[{\mbox{\hyperlink{classbfl_1_1ExogenousModel}{Exogenous\+Model}} \&}]{exogenous\+\_\+model }\end{DoxyParamCaption})}
+
+
+
+Definition at line 223 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+Gaussian\+Mixture\+::components, bfl\+::\+Gaussian\+Mixture\+::covariance(), bfl\+::\+State\+Model\+::get\+Noise\+Covariance\+Matrix(), bfl\+::\+State\+Model\+::get\+Output\+Size(), bfl\+::\+Exogenous\+Model\+::propagate(), bfl\+::\+State\+Model\+::propagate(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_aa14b7405b4800c5382d402b2446f89c6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_ad1df67122c8b838ae669d1f2e0665481}\label{namespacebfl_1_1sigma__point_ad1df67122c8b838ae669d1f2e0665481}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{classbfl_1_1ExogenousModel}{Exogenous\+Model}} \&}]{exogenous\+\_\+model }\end{DoxyParamCaption})}
+
+
+
+Definition at line 258 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+Exogenous\+Model\+::get\+Output\+Size(), bfl\+::\+Exogenous\+Model\+::propagate(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_ad1df67122c8b838ae669d1f2e0665481_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_a5b51d83e121121ecc6d65e9e5e7d6859}\label{namespacebfl_1_1sigma__point_a5b51d83e121121ecc6d65e9e5e7d6859}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily std\+::tuple$<$ bool, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{classbfl_1_1MeasurementModel}{Measurement\+Model}} \&}]{meas\+\_\+model }\end{DoxyParamCaption})}
+
+
+
+Definition at line 283 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+Measurement\+Model\+::get\+Output\+Size(), bfl\+::\+Measurement\+Model\+::predicted\+Measure(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_a5b51d83e121121ecc6d65e9e5e7d6859_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_a27f6087b127407402338b68bf7853ae6}\label{namespacebfl_1_1sigma__point_a27f6087b127407402338b68bf7853ae6}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+transform@{unscented\+\_\+transform}}
+\index{unscented\+\_\+transform@{unscented\+\_\+transform}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+transform()}{unscented\_transform()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily std\+::tuple$<$ bool, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}}, Matrix\+Xd $>$ bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{state,  }\item[{const \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight}{U\+T\+Weight}} \&}]{weight,  }\item[{\mbox{\hyperlink{classbfl_1_1AdditiveMeasurementModel}{Additive\+Measurement\+Model}} \&}]{meas\+\_\+model }\end{DoxyParamCaption})}
+
+
+
+Definition at line 309 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::\+Gaussian\+Mixture\+::components, bfl\+::\+Gaussian\+Mixture\+::covariance(), bfl\+::\+Measurement\+Model\+::get\+Noise\+Covariance\+Matrix(), bfl\+::\+Measurement\+Model\+::get\+Output\+Size(), bfl\+::\+Measurement\+Model\+::predicted\+Measure(), and unscented\+\_\+transform().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacebfl_1_1sigma__point_a27f6087b127407402338b68bf7853ae6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacebfl_1_1sigma__point_a2cdca209c158edd6440c2f077b345799}\label{namespacebfl_1_1sigma__point_a2cdca209c158edd6440c2f077b345799}} 
+\index{bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}!unscented\+\_\+weights@{unscented\+\_\+weights}}
+\index{unscented\+\_\+weights@{unscented\+\_\+weights}!bfl\+::sigma\+\_\+point@{bfl\+::sigma\+\_\+point}}
+\subsubsection{\texorpdfstring{unscented\+\_\+weights()}{unscented\_weights()}}
+{\footnotesize\ttfamily void bfl\+::sigma\+\_\+point\+::unscented\+\_\+weights (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t}]{n,  }\item[{const double}]{alpha,  }\item[{const double}]{beta,  }\item[{const double}]{kappa,  }\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$}]{weight\+\_\+mean,  }\item[{Eigen\+::\+Ref$<$ Eigen\+::\+Vector\+Xd $>$}]{weight\+\_\+covariance,  }\item[{double \&}]{c }\end{DoxyParamCaption})}
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::\+U\+T\+Weight().
+

@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classbfl_1_1GaussianCorrection.html" title="bfl::GaussianCorrection" alt="" coords="5,55,166,80"/>
+<area shape="rect" id="node2" href="$classbfl_1_1KFCorrection.html" title="bfl::KFCorrection" alt="" coords="223,5,345,31"/>
+<area shape="rect" id="node3" href="$classbfl_1_1SUKFCorrection.html" title="This class implements the algorithm: Barfoot, T., McManus, C. " alt="" coords="214,55,354,80"/>
+<area shape="rect" id="node4" href="$classbfl_1_1UKFCorrection.html" title="bfl::UKFCorrection" alt="" coords="218,104,349,129"/>
+</map>

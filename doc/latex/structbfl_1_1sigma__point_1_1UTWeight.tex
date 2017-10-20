@@ -1,0 +1,107 @@
+\hypertarget{structbfl_1_1sigma__point_1_1UTWeight}{}\section{bfl\+:\+:sigma\+\_\+point\+:\+:U\+T\+Weight Struct Reference}
+\label{structbfl_1_1sigma__point_1_1UTWeight}\index{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}}
+
+
+{\ttfamily \#include $<$sigma\+\_\+point.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight_a72931837cdd99f042be08a99deaa54d2}{U\+T\+Weight}} (std\+::size\+\_\+t n, const double alpha, const double beta, const double kappa)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight_aa265298724b6547d123c7a96dec210b2}{mean}}
+\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight_a493c778f012c80ddd4049aa61d22514b}{covariance}}
+\item 
+double \mbox{\hyperlink{structbfl_1_1sigma__point_1_1UTWeight_a861b9163db2779b84d7af79ba03e4203}{c}}
+\begin{DoxyCompactList}\small\item\em c = sqrt(n + lambda) with lambda a ut parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 30 of file sigma\+\_\+point.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structbfl_1_1sigma__point_1_1UTWeight_a72931837cdd99f042be08a99deaa54d2}\label{structbfl_1_1sigma__point_1_1UTWeight_a72931837cdd99f042be08a99deaa54d2}} 
+\index{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}!U\+T\+Weight@{U\+T\+Weight}}
+\index{U\+T\+Weight@{U\+T\+Weight}!bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}}
+\subsubsection{\texorpdfstring{U\+T\+Weight()}{UTWeight()}}
+{\footnotesize\ttfamily bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::\+U\+T\+Weight (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{n,  }\item[{const double}]{alpha,  }\item[{const double}]{beta,  }\item[{const double}]{kappa }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file sigma\+\_\+point.\+cpp.
+
+
+
+References bfl\+::sigma\+\_\+point\+::unscented\+\_\+weights().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structbfl_1_1sigma__point_1_1UTWeight_a72931837cdd99f042be08a99deaa54d2_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structbfl_1_1sigma__point_1_1UTWeight_a861b9163db2779b84d7af79ba03e4203}\label{structbfl_1_1sigma__point_1_1UTWeight_a861b9163db2779b84d7af79ba03e4203}} 
+\index{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}!c@{c}}
+\index{c@{c}!bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}}
+\subsubsection{\texorpdfstring{c}{c}}
+{\footnotesize\ttfamily double bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::c}
+
+
+
+c = sqrt(n + lambda) with lambda a ut parameter. 
+
+
+
+Definition at line 37 of file sigma\+\_\+point.\+h.
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform().
+
+\mbox{\Hypertarget{structbfl_1_1sigma__point_1_1UTWeight_a493c778f012c80ddd4049aa61d22514b}\label{structbfl_1_1sigma__point_1_1UTWeight_a493c778f012c80ddd4049aa61d22514b}} 
+\index{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}!covariance@{covariance}}
+\index{covariance@{covariance}!bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}}
+\subsubsection{\texorpdfstring{covariance}{covariance}}
+{\footnotesize\ttfamily Eigen\+::\+Vector\+Xd bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::covariance}
+
+
+
+Definition at line 33 of file sigma\+\_\+point.\+h.
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform().
+
+\mbox{\Hypertarget{structbfl_1_1sigma__point_1_1UTWeight_aa265298724b6547d123c7a96dec210b2}\label{structbfl_1_1sigma__point_1_1UTWeight_aa265298724b6547d123c7a96dec210b2}} 
+\index{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}!mean@{mean}}
+\index{mean@{mean}!bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight@{bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight}}
+\subsubsection{\texorpdfstring{mean}{mean}}
+{\footnotesize\ttfamily Eigen\+::\+Vector\+Xd bfl\+::sigma\+\_\+point\+::\+U\+T\+Weight\+::mean}
+
+
+
+Definition at line 32 of file sigma\+\_\+point.\+h.
+
+
+
+Referenced by bfl\+::sigma\+\_\+point\+::unscented\+\_\+transform().
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/include/\+Bayes\+Filters/\mbox{\hyperlink{sigma__point_8h}{sigma\+\_\+point.\+h}}\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/src/\mbox{\hyperlink{sigma__point_8cpp}{sigma\+\_\+point.\+cpp}}\end{DoxyCompactItemize}

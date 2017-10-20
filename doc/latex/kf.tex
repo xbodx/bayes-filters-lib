@@ -1,0 +1,150 @@
+The following snippet code shows how to run a Kalman Filter (KF) using the implementation provided by the library.~\newline
+
+
+
+\begin{DoxyCodeInclude}
+1 \textcolor{preprocessor}{#include <\mbox{\hyperlink{Gaussian_8h}{BayesFilters/Gaussian.h}}>}
+2 \textcolor{preprocessor}{#include <\mbox{\hyperlink{GaussianFilter_8h}{BayesFilters/GaussianFilter.h}}>}
+3 \textcolor{preprocessor}{#include <\mbox{\hyperlink{KFCorrection_8h}{BayesFilters/KFCorrection.h}}>}
+4 \textcolor{preprocessor}{#include <\mbox{\hyperlink{KFPrediction_8h}{BayesFilters/KFPrediction.h}}>}
+5 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedLinearSensor_8h}{BayesFilters/SimulatedLinearSensor.h}}>}
+6 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedStateModel_8h}{BayesFilters/SimulatedStateModel.h}}>}
+7 \textcolor{preprocessor}{#include <\mbox{\hyperlink{WhiteNoiseAcceleration_8h}{BayesFilters/WhiteNoiseAcceleration.h}}>}
+8 \textcolor{preprocessor}{#include <\mbox{\hyperlink{utils_8h}{BayesFilters/utils.h}}>}
+9 
+10 \textcolor{preprocessor}{#include <Eigen/Dense>}
+11 
+12 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacebfl}{bfl}};
+13 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceEigen}{Eigen}};
+14 
+15 
+16 \textcolor{keyword}{class }KFSimulation : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1GaussianFilter}{GaussianFilter}}
+17 \{
+18 \textcolor{keyword}{public}:
+19     KFSimulation
+20     (
+21         \mbox{\hyperlink{classbfl_1_1Gaussian}{Gaussian}}& initial\_state,
+22         std::unique\_ptr<GaussianPrediction> prediction,
+23         std::unique\_ptr<GaussianCorrection> correction,
+24         std::size\_t simulation\_steps
+25     ) noexcept :
+26         \mbox{\hyperlink{classbfl_1_1GaussianFilter}{GaussianFilter}}(initial\_state, std::move(prediction), std::move(correction)),
+27         simulation\_steps\_(simulation\_steps)
+28     \{ \}
+29 
+30 \textcolor{keyword}{protected}:
+31     \textcolor{keywordtype}{bool} runCondition()\textcolor{keyword}{ override}
+32 \textcolor{keyword}{    }\{
+33         \textcolor{keywordflow}{if} (getFilteringStep() < simulation\_steps\_)
+34             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+35         \textcolor{keywordflow}{else}
+36             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+37     \}
+38 
+39 
+40     std::vector<std::string> log\_filenames(\textcolor{keyword}{const} std::string& prefix\_path, \textcolor{keyword}{const} std::string& prefix\_name)\textcolor{keyword}{
+       override}
+41 \textcolor{keyword}{    }\{
+42         \textcolor{keywordflow}{return}  \{prefix\_path + \textcolor{stringliteral}{"/"} + prefix\_name + \textcolor{stringliteral}{"\_pred\_mean"},
+43                  prefix\_path + \textcolor{stringliteral}{"/"} + prefix\_name + \textcolor{stringliteral}{"\_cor\_mean"}\};
+44     \}
+45 
+46 
+47     \textcolor{keywordtype}{void} log()\textcolor{keyword}{ override}
+48 \textcolor{keyword}{    }\{
+49         logger(predicted\_state\_.mean().transpose(), corrected\_state\_.mean().transpose());
+50     \}
+51 
+52 \textcolor{keyword}{private}:
+53     std::size\_t simulation\_steps\_;
+54 \};
+55 
+56 
+57 \textcolor{keywordtype}{int} main()
+58 \{
+59     std::cout << \textcolor{stringliteral}{"Running a KF filter on a simulated target."} << std::endl;
+60     std::cout << \textcolor{stringliteral}{"Data is logged in the test folder with prefix testKF."} << std::endl;
+61 
+62     \textcolor{comment}{/* A set of parameters needed to run a Kalman filter in a simulated environment. */}
+63     Vector4d initial\_simulated\_state(10.0f, 0.0f, 10.0f, 0.0f);
+64     std::size\_t simulation\_time = 100;
+65 
+66 
+67     \textcolor{comment}{/* Step 1 - Initialization */}
+68 
+69     \mbox{\hyperlink{classbfl_1_1Gaussian}{Gaussian}} initial\_state(4);
+70     Vector4d initial\_mean(4.0f, 0.04f, 15.0f, 0.4f);
+71     Matrix4d initial\_covariance;
+72     initial\_covariance << pow(0.05, 2), 0,            0,            0,
+73                           0,            pow(0.05, 2), 0,            0,
+74                           0,            0,            pow(0.01, 2), 0,
+75                           0,            0,            0,            pow(0.01, 2);
+76     initial\_state.mean() = initial\_mean;
+77     initial\_state.covariance() = initial\_covariance;
+78 
+79 
+80     \textcolor{comment}{/* Step 2 - Prediction */}
+81 
+82     \textcolor{comment}{/* Step 2.1 - Define the state model. */}
+83 
+84     \textcolor{comment}{/* Initialize a white noise acceleration state model. */}
+85     \textcolor{keywordtype}{double} T = 1.0f;
+86     \textcolor{keywordtype}{double} tilde\_q = 10.0f;
+87 
+88     std::unique\_ptr<LinearStateModel> wna = utils::make\_unique<WhiteNoiseAcceleration>(T, tilde\_q);
+89 
+90     \textcolor{comment}{/* Step 2.2 - Define the prediction step. */}
+91     
+92     \textcolor{comment}{/* Initialize the Kalman filter prediction step and pass the ownership of the state model. */}
+93     std::unique\_ptr<KFPrediction> kf\_prediction = utils::make\_unique<KFPrediction>(std::move(wna));
+94 
+95 
+96     \textcolor{comment}{/* Step 3 - Correction */}
+97 
+98     \textcolor{comment}{/* Step 3.1 - Define where the measurement are originated from (simulated in this case). */}
+99 
+100     \textcolor{comment}{/* Initialize simulated target model with a white noise acceleration. */}
+101     std::unique\_ptr<StateModel> target\_model = utils::make\_unique<WhiteNoiseAcceleration>(T, tilde\_q);
+102     std::unique\_ptr<SimulatedStateModel> simulated\_state\_model = utils::make\_unique<SimulatedStateModel>(
+      std::move(target\_model), initial\_simulated\_state, simulation\_time);
+103     simulated\_state\_model->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testKF"});
+104 
+105     \textcolor{comment}{/* Step 3.2 - Initialize a measurement model (a linear sensor reading x and y coordinates). */}
+106     std::unique\_ptr<LinearMeasurementModel> simulated\_linear\_sensor = 
+      utils::make\_unique<SimulatedLinearSensor>(std::move(simulated\_state\_model));
+107     simulated\_linear\_sensor->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testKF"});
+108 
+109     \textcolor{comment}{/* Step 3.3 - Initialize the Kalman filter correction step and pass the ownership of the measurement
+       model. */}
+110     std::unique\_ptr<KFCorrection> kf\_correction = utils::make\_unique<KFCorrection>(std::move(
+      simulated\_linear\_sensor));
+111 
+112 
+113     \textcolor{comment}{/* Step 4 - Assemble the Kalman filter. */}
+114     std::cout << \textcolor{stringliteral}{"Constructing Kalman filter..."} << std::flush;
+115     KFSimulation kf(initial\_state, std::move(kf\_prediction), std::move(kf\_correction), simulation\_time);
+116     kf.enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testKF"});
+117     std::cout << \textcolor{stringliteral}{"done!"} << std::endl;
+118 
+119 
+120     \textcolor{comment}{/* Step 5 - Boot the filter. */}
+121     std::cout << \textcolor{stringliteral}{"Booting Kalman filter..."} << std::flush;
+122     kf.boot();
+123     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+124 
+125 
+126     \textcolor{comment}{/* Step 6 - Run the filter and wait until it is closed. */}
+127     \textcolor{comment}{/* Note that since this is a simulation, the filter will end upon simulation termination. */}
+128     std::cout << \textcolor{stringliteral}{"Running Kalman filter..."} << std::flush;
+129     kf.run();
+130     std::cout << \textcolor{stringliteral}{"waiting..."} << std::flush;
+131 
+132     \textcolor{keywordflow}{if} (!kf.wait())
+133         \textcolor{keywordflow}{return} EXIT\_FAILURE;
+134 
+135     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+136 
+137     \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+138 \}
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,6 @@
+<map id="bfl::FilteringAlgorithm::boot" name="bfl::FilteringAlgorithm::boot">
+<area shape="rect" id="node2" href="$classbfl_1_1FilteringAlgorithm.html#a139fe290f73939e72c88cb43c8ef7544" title="bfl::FilteringAlgorithm\l::filteringRecursion" alt="" coords="200,68,346,107"/>
+<area shape="rect" id="node3" href="$classbfl_1_1FilteringAlgorithm.html#ab3bceb43b5810a4bf1da884b8a0b145a" title="bfl::FilteringAlgorithm\l::filteringStep" alt="" coords="394,5,541,44"/>
+<area shape="rect" id="node4" href="$classbfl_1_1FilteringAlgorithm.html#adebe2ec2372f97a2a5baecf8c2c2a9c9" title="bfl::FilteringAlgorithm\l::initialization" alt="" coords="394,68,541,107"/>
+<area shape="rect" id="node5" href="$classbfl_1_1FilteringAlgorithm.html#a5fc12882356f6906b102fbfff2bc4b7c" title="bfl::FilteringAlgorithm\l::runCondition" alt="" coords="394,131,541,169"/>
+</map>

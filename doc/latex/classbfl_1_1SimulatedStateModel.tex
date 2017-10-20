@@ -1,0 +1,426 @@
+\hypertarget{classbfl_1_1SimulatedStateModel}{}\section{bfl\+:\+:Simulated\+State\+Model Class Reference}
+\label{classbfl_1_1SimulatedStateModel}\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+
+
+{\ttfamily \#include $<$Simulated\+State\+Model.\+h$>$}
+
+
+
+Inheritance diagram for bfl\+:\+:Simulated\+State\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classbfl_1_1SimulatedStateModel__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a46fd7b491ec8e7e152faa07f9d46f815}{Simulated\+State\+Model}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} $>$ state\+\_\+model, const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&initial\+\_\+state, const unsigned int simulation\+\_\+time)
+\item 
+virtual \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a5158e3a4a42075325e26cad6f1a63434}{$\sim$\+Simulated\+State\+Model}} () noexcept
+\item 
+bool \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_ae7bc3a9bf9d4ed8a8d1985772380295e}{buffer\+Data}} () override
+\item 
+\mbox{\hyperlink{namespacebfl_af6b103c6821db1b54452f776fdd9dd02}{Data}} \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a23aa6df27179a9a48b48cf4002508ba9}{get\+Data}} () const override
+\item 
+bool \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_ab629cfc5e8db969760f5fa161a1cf360}{set\+Property}} (const std\+::string \&property) override
+\item 
+\mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} \& \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a294e8a17e51310218295945276021f2f}{get\+State\+Model}} ()
+\item 
+bool \mbox{\hyperlink{classbfl_1_1Logger_ae94b97b6e8d7902e8ce048384813122e}{enable\+\_\+log}} (const std\+::string \&prefix\+\_\+path, const std\+::string \&prefix\+\_\+name)
+\item 
+bool \mbox{\hyperlink{classbfl_1_1Logger_a440467a28ccc46490d767fe0ef6f556a}{disable\+\_\+log}} ()
+\item 
+std\+::string \mbox{\hyperlink{classbfl_1_1Logger_a56cf1a4e712bf23d9978420a8a59a62b}{get\+\_\+prefix\+\_\+path}} () const
+\item 
+std\+::string \mbox{\hyperlink{classbfl_1_1Logger_a913a795b7bfbf378815eeb342d68a7c0}{get\+\_\+prefix\+\_\+name}} () const
+\item 
+{\footnotesize template$<$typename Datum\+Type $>$ }\\void \mbox{\hyperlink{classbfl_1_1Logger_a1033ff31398484f2132f84fd140da9e3}{logger}} (Datum\+Type datum)
+\item 
+{\footnotesize template$<$typename... Data\+Type$>$ }\\void \mbox{\hyperlink{classbfl_1_1Logger_aca2086c9256e5c404872b91f7f25b97d}{logger}} (Data\+Type... data)
+\item 
+{\footnotesize template$<$typename Datum\+Type $>$ }\\void \mbox{\hyperlink{classbfl_1_1Logger_a50b1c109730fa98f66e66f420f0158fe}{logger}} (Datum\+Type datum) const
+\item 
+{\footnotesize template$<$typename... Data\+Type$>$ }\\void \mbox{\hyperlink{classbfl_1_1Logger_a0f0cf7ce956546d94dfb1feb7cebf171}{logger}} (Data\+Type... data) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_ab4212871b8ca425855ec351c13dc3052}{log\+\_\+filenames}} (const std\+::string \&prefix\+\_\+path, const std\+::string \&prefix\+\_\+name) override
+\item 
+void \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_aa022eb0d50d898ffcc831af2907265b2}{log}} () override
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} $>$ \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a02e90a22420f8bbec12b97a1f46c987c}{state\+\_\+model\+\_\+}}
+\item 
+\mbox{\hyperlink{namespacebfl_af6b103c6821db1b54452f776fdd9dd02}{Data}} \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a865eeb0f3df65b4fbdbc512b354a219f}{data\+\_\+simulated\+\_\+state\+\_\+model\+\_\+}}
+\item 
+unsigned int \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_ae81c0eee264cc44d0387662569c99b9e}{current\+\_\+simulation\+\_\+time\+\_\+}} = 0
+\item 
+bool \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_aa658259f46cf58300c8b4ef709c7b35f}{log\+\_\+enabled\+\_\+}} = false
+\item 
+std\+::string \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_ab11657163e794ff486e800dd80cd361d}{prefix\+\_\+name\+\_\+}}
+\item 
+std\+::ofstream \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_afe3aa6ccfb3090f05ea7386150749540}{log\+\_\+file\+\_\+state\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a1cb1c318a4c3ad56e995ca0f1878e67e}{simulation\+\_\+time\+\_\+}}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classbfl_1_1SimulatedStateModel_a0f1d1cc526d7797b3999b793ff39fd2d}{target\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 16 of file Simulated\+State\+Model.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a46fd7b491ec8e7e152faa07f9d46f815}\label{classbfl_1_1SimulatedStateModel_a46fd7b491ec8e7e152faa07f9d46f815}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!Simulated\+State\+Model@{Simulated\+State\+Model}}
+\index{Simulated\+State\+Model@{Simulated\+State\+Model}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{Simulated\+State\+Model()}{SimulatedStateModel()}}
+{\footnotesize\ttfamily Simulated\+State\+Model\+::\+Simulated\+State\+Model (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} $>$}]{state\+\_\+model,  }\item[{const Eigen\+::\+Ref$<$ const Eigen\+::\+Vector\+Xd $>$ \&}]{initial\+\_\+state,  }\item[{const unsigned int}]{simulation\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file Simulated\+State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a5158e3a4a42075325e26cad6f1a63434}\label{classbfl_1_1SimulatedStateModel_a5158e3a4a42075325e26cad6f1a63434}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!````~Simulated\+State\+Model@{$\sim$\+Simulated\+State\+Model}}
+\index{````~Simulated\+State\+Model@{$\sim$\+Simulated\+State\+Model}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{$\sim$\+Simulated\+State\+Model()}{~SimulatedStateModel()}}
+{\footnotesize\ttfamily Simulated\+State\+Model\+::$\sim$\+Simulated\+State\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 26 of file Simulated\+State\+Model.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_ae7bc3a9bf9d4ed8a8d1985772380295e}\label{classbfl_1_1SimulatedStateModel_ae7bc3a9bf9d4ed8a8d1985772380295e}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!buffer\+Data@{buffer\+Data}}
+\index{buffer\+Data@{buffer\+Data}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{buffer\+Data()}{bufferData()}}
+{\footnotesize\ttfamily bool Simulated\+State\+Model\+::buffer\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbfl_1_1Agent_aceb93f1712a98222af2b02537c09b6dc}{bfl\+::\+Agent}}.
+
+
+
+Definition at line 30 of file Simulated\+State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1Logger_a440467a28ccc46490d767fe0ef6f556a}\label{classbfl_1_1Logger_a440467a28ccc46490d767fe0ef6f556a}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!disable\+\_\+log@{disable\+\_\+log}}
+\index{disable\+\_\+log@{disable\+\_\+log}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{disable\+\_\+log()}{disable\_log()}}
+{\footnotesize\ttfamily bool Logger\+::disable\+\_\+log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 58 of file Logger.\+cpp.
+
+
+
+References bfl\+::\+Logger\+::file\+\_\+names\+\_\+, bfl\+::\+Logger\+::log\+\_\+enabled\+\_\+, and bfl\+::\+Logger\+::log\+\_\+files\+\_\+.
+
+
+
+Referenced by bfl\+::\+Logger\+::$\sim$\+Logger().
+
+\mbox{\Hypertarget{classbfl_1_1Logger_ae94b97b6e8d7902e8ce048384813122e}\label{classbfl_1_1Logger_ae94b97b6e8d7902e8ce048384813122e}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!enable\+\_\+log@{enable\+\_\+log}}
+\index{enable\+\_\+log@{enable\+\_\+log}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{enable\+\_\+log()}{enable\_log()}}
+{\footnotesize\ttfamily bool Logger\+::enable\+\_\+log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prefix\+\_\+path,  }\item[{const std\+::string \&}]{prefix\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 15 of file Logger.\+cpp.
+
+
+
+References bfl\+::\+Logger\+::file\+\_\+names\+\_\+, bfl\+::\+Logger\+::log\+\_\+enabled\+\_\+, bfl\+::\+Logger\+::log\+\_\+filenames(), and bfl\+::\+Logger\+::log\+\_\+files\+\_\+.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbfl_1_1Logger_ae94b97b6e8d7902e8ce048384813122e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbfl_1_1Logger_a913a795b7bfbf378815eeb342d68a7c0}\label{classbfl_1_1Logger_a913a795b7bfbf378815eeb342d68a7c0}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!get\+\_\+prefix\+\_\+name@{get\+\_\+prefix\+\_\+name}}
+\index{get\+\_\+prefix\+\_\+name@{get\+\_\+prefix\+\_\+name}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+\_\+prefix\+\_\+name()}{get\_prefix\_name()}}
+{\footnotesize\ttfamily std\+::string Logger\+::get\+\_\+prefix\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 81 of file Logger.\+cpp.
+
+
+
+References bfl\+::\+Logger\+::prefix\+\_\+name\+\_\+.
+
+\mbox{\Hypertarget{classbfl_1_1Logger_a56cf1a4e712bf23d9978420a8a59a62b}\label{classbfl_1_1Logger_a56cf1a4e712bf23d9978420a8a59a62b}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!get\+\_\+prefix\+\_\+path@{get\+\_\+prefix\+\_\+path}}
+\index{get\+\_\+prefix\+\_\+path@{get\+\_\+prefix\+\_\+path}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+\_\+prefix\+\_\+path()}{get\_prefix\_path()}}
+{\footnotesize\ttfamily std\+::string Logger\+::get\+\_\+prefix\+\_\+path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 75 of file Logger.\+cpp.
+
+
+
+References bfl\+::\+Logger\+::prefix\+\_\+path\+\_\+.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a23aa6df27179a9a48b48cf4002508ba9}\label{classbfl_1_1SimulatedStateModel_a23aa6df27179a9a48b48cf4002508ba9}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+Data()}{getData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacebfl_af6b103c6821db1b54452f776fdd9dd02}{Data}} Simulated\+State\+Model\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classbfl_1_1Agent_a38522a865006e91ab426fe3bf3a6d4c8}{bfl\+::\+Agent}}.
+
+
+
+Definition at line 44 of file Simulated\+State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a294e8a17e51310218295945276021f2f}\label{classbfl_1_1SimulatedStateModel_a294e8a17e51310218295945276021f2f}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!get\+State\+Model@{get\+State\+Model}}
+\index{get\+State\+Model@{get\+State\+Model}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{get\+State\+Model()}{getStateModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}} \& Simulated\+State\+Model\+::get\+State\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 64 of file Simulated\+State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_aa022eb0d50d898ffcc831af2907265b2}\label{classbfl_1_1SimulatedStateModel_aa022eb0d50d898ffcc831af2907265b2}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!log@{log}}
+\index{log@{log}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void Simulated\+State\+Model\+::log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classbfl_1_1Logger_ad44f46593cb8c4c87c1178eb326e2f64}{bfl\+::\+Logger}}.
+
+
+
+Definition at line 70 of file Simulated\+State\+Model.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_ab4212871b8ca425855ec351c13dc3052}\label{classbfl_1_1SimulatedStateModel_ab4212871b8ca425855ec351c13dc3052}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!log\+\_\+filenames@{log\+\_\+filenames}}
+\index{log\+\_\+filenames@{log\+\_\+filenames}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{log\+\_\+filenames()}{log\_filenames()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ bfl\+::\+Simulated\+State\+Model\+::log\+\_\+filenames (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prefix\+\_\+path,  }\item[{const std\+::string \&}]{prefix\+\_\+name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classbfl_1_1Logger_a328ceaa8e70e6918f11142b12b8be217}{bfl\+::\+Logger}}.
+
+
+
+Definition at line 49 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1Logger_a1033ff31398484f2132f84fd140da9e3}\label{classbfl_1_1Logger_a1033ff31398484f2132f84fd140da9e3}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!logger@{logger}}
+\index{logger@{logger}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{logger()}{logger()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename Datum\+Type $>$ \\
+void bfl\+::\+Logger\+::logger (\begin{DoxyParamCaption}\item[{Datum\+Type}]{datum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 28 of file Logger.\+h.
+
+
+
+References bfl\+::\+Logger\+::log\+\_\+enabled\+\_\+, and bfl\+::\+Logger\+::log\+\_\+files\+\_\+.
+
+
+
+Referenced by bfl\+::\+Simulated\+Linear\+Sensor\+::log().
+
+\mbox{\Hypertarget{classbfl_1_1Logger_aca2086c9256e5c404872b91f7f25b97d}\label{classbfl_1_1Logger_aca2086c9256e5c404872b91f7f25b97d}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!logger@{logger}}
+\index{logger@{logger}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{logger()}{logger()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename... Data\+Type$>$ \\
+void bfl\+::\+Logger\+::logger (\begin{DoxyParamCaption}\item[{Data\+Type...}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 35 of file Logger.\+h.
+
+
+
+References bfl\+::\+Logger\+::log\+\_\+enabled\+\_\+, and bfl\+::\+Logger\+::logger\+\_\+helper().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{classbfl_1_1Logger_aca2086c9256e5c404872b91f7f25b97d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbfl_1_1Logger_a50b1c109730fa98f66e66f420f0158fe}\label{classbfl_1_1Logger_a50b1c109730fa98f66e66f420f0158fe}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!logger@{logger}}
+\index{logger@{logger}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{logger()}{logger()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename Datum\+Type $>$ \\
+void bfl\+::\+Logger\+::logger (\begin{DoxyParamCaption}\item[{Datum\+Type}]{datum }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 42 of file Logger.\+h.
+
+
+
+References bfl\+::\+Logger\+::log\+\_\+enabled\+\_\+, and bfl\+::\+Logger\+::log\+\_\+files\+\_\+.
+
+\mbox{\Hypertarget{classbfl_1_1Logger_a0f0cf7ce956546d94dfb1feb7cebf171}\label{classbfl_1_1Logger_a0f0cf7ce956546d94dfb1feb7cebf171}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!logger@{logger}}
+\index{logger@{logger}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{logger()}{logger()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename... Data\+Type$>$ \\
+void bfl\+::\+Logger\+::logger (\begin{DoxyParamCaption}\item[{Data\+Type...}]{data }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 49 of file Logger.\+h.
+
+
+
+References bfl\+::\+Logger\+::log\+\_\+enabled\+\_\+, and bfl\+::\+Logger\+::logger\+\_\+helper().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{classbfl_1_1Logger_a0f0cf7ce956546d94dfb1feb7cebf171_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_ab629cfc5e8db969760f5fa161a1cf360}\label{classbfl_1_1SimulatedStateModel_ab629cfc5e8db969760f5fa161a1cf360}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!set\+Property@{set\+Property}}
+\index{set\+Property@{set\+Property}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{set\+Property()}{setProperty()}}
+{\footnotesize\ttfamily bool Simulated\+State\+Model\+::set\+Property (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classbfl_1_1Agent_a1291dcb438c8fc1400e1728711302007}{bfl\+::\+Agent}}.
+
+
+
+Definition at line 50 of file Simulated\+State\+Model.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_ae81c0eee264cc44d0387662569c99b9e}\label{classbfl_1_1SimulatedStateModel_ae81c0eee264cc44d0387662569c99b9e}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!current\+\_\+simulation\+\_\+time\+\_\+@{current\+\_\+simulation\+\_\+time\+\_\+}}
+\index{current\+\_\+simulation\+\_\+time\+\_\+@{current\+\_\+simulation\+\_\+time\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{current\+\_\+simulation\+\_\+time\+\_\+}{current\_simulation\_time\_}}
+{\footnotesize\ttfamily unsigned int bfl\+::\+Simulated\+State\+Model\+::current\+\_\+simulation\+\_\+time\+\_\+ = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 41 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a865eeb0f3df65b4fbdbc512b354a219f}\label{classbfl_1_1SimulatedStateModel_a865eeb0f3df65b4fbdbc512b354a219f}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!data\+\_\+simulated\+\_\+state\+\_\+model\+\_\+@{data\+\_\+simulated\+\_\+state\+\_\+model\+\_\+}}
+\index{data\+\_\+simulated\+\_\+state\+\_\+model\+\_\+@{data\+\_\+simulated\+\_\+state\+\_\+model\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{data\+\_\+simulated\+\_\+state\+\_\+model\+\_\+}{data\_simulated\_state\_model\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacebfl_af6b103c6821db1b54452f776fdd9dd02}{Data}} bfl\+::\+Simulated\+State\+Model\+::data\+\_\+simulated\+\_\+state\+\_\+model\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 39 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_aa658259f46cf58300c8b4ef709c7b35f}\label{classbfl_1_1SimulatedStateModel_aa658259f46cf58300c8b4ef709c7b35f}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!log\+\_\+enabled\+\_\+@{log\+\_\+enabled\+\_\+}}
+\index{log\+\_\+enabled\+\_\+@{log\+\_\+enabled\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{log\+\_\+enabled\+\_\+}{log\_enabled\_}}
+{\footnotesize\ttfamily bool bfl\+::\+Simulated\+State\+Model\+::log\+\_\+enabled\+\_\+ = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 43 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_afe3aa6ccfb3090f05ea7386150749540}\label{classbfl_1_1SimulatedStateModel_afe3aa6ccfb3090f05ea7386150749540}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!log\+\_\+file\+\_\+state\+\_\+@{log\+\_\+file\+\_\+state\+\_\+}}
+\index{log\+\_\+file\+\_\+state\+\_\+@{log\+\_\+file\+\_\+state\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{log\+\_\+file\+\_\+state\+\_\+}{log\_file\_state\_}}
+{\footnotesize\ttfamily std\+::ofstream bfl\+::\+Simulated\+State\+Model\+::log\+\_\+file\+\_\+state\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 47 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_ab11657163e794ff486e800dd80cd361d}\label{classbfl_1_1SimulatedStateModel_ab11657163e794ff486e800dd80cd361d}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!prefix\+\_\+name\+\_\+@{prefix\+\_\+name\+\_\+}}
+\index{prefix\+\_\+name\+\_\+@{prefix\+\_\+name\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{prefix\+\_\+name\+\_\+}{prefix\_name\_}}
+{\footnotesize\ttfamily std\+::string bfl\+::\+Simulated\+State\+Model\+::prefix\+\_\+name\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 45 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a1cb1c318a4c3ad56e995ca0f1878e67e}\label{classbfl_1_1SimulatedStateModel_a1cb1c318a4c3ad56e995ca0f1878e67e}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!simulation\+\_\+time\+\_\+@{simulation\+\_\+time\+\_\+}}
+\index{simulation\+\_\+time\+\_\+@{simulation\+\_\+time\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{simulation\+\_\+time\+\_\+}{simulation\_time\_}}
+{\footnotesize\ttfamily unsigned int bfl\+::\+Simulated\+State\+Model\+::simulation\+\_\+time\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 32 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a02e90a22420f8bbec12b97a1f46c987c}\label{classbfl_1_1SimulatedStateModel_a02e90a22420f8bbec12b97a1f46c987c}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!state\+\_\+model\+\_\+@{state\+\_\+model\+\_\+}}
+\index{state\+\_\+model\+\_\+@{state\+\_\+model\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{state\+\_\+model\+\_\+}{state\_model\_}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}}$>$ bfl\+::\+Simulated\+State\+Model\+::state\+\_\+model\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 37 of file Simulated\+State\+Model.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1SimulatedStateModel_a0f1d1cc526d7797b3999b793ff39fd2d}\label{classbfl_1_1SimulatedStateModel_a0f1d1cc526d7797b3999b793ff39fd2d}} 
+\index{bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}!target\+\_\+@{target\+\_\+}}
+\index{target\+\_\+@{target\+\_\+}!bfl\+::\+Simulated\+State\+Model@{bfl\+::\+Simulated\+State\+Model}}
+\subsubsection{\texorpdfstring{target\+\_\+}{target\_}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd bfl\+::\+Simulated\+State\+Model\+::target\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 34 of file Simulated\+State\+Model.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/include/\+Bayes\+Filters/\mbox{\hyperlink{SimulatedStateModel_8h}{Simulated\+State\+Model.\+h}}\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/src/\mbox{\hyperlink{SimulatedStateModel_8cpp}{Simulated\+State\+Model.\+cpp}}\end{DoxyCompactItemize}

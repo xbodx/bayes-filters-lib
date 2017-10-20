@@ -1,0 +1,15 @@
+<map id="bfl::UKFCorrection::correctStep" name="bfl::UKFCorrection::correctStep">
+<area shape="rect" id="node2" href="$namespacebfl_1_1any.html#a4ecb51ad57b3fa935cabdc0dcdcb4df1" title="Performs type&#45;safe access to the contained object. " alt="" coords="436,159,561,184"/>
+<area shape="rect" id="node3" href="$classbfl_1_1GaussianMixture.html#aec4e807341e18c18faed041c41121cb7" title="bfl::GaussianMixture\l::augmentWithNoise" alt="" coords="205,59,348,98"/>
+<area shape="rect" id="node4" href="$classbfl_1_1GaussianMixture.html#a65a60ef46d16ac33196a09963bbccdee" title="bfl::GaussianMixture\l::covariance" alt="" coords="637,92,780,131"/>
+<area shape="rect" id="node5" href="$classbfl_1_1MeasurementModel.html#af25f42076b69e0c6cab47d36d796536f" title="bfl::MeasurementModel\l::getNoiseCovarianceMatrix" alt="" coords="184,174,369,212"/>
+<area shape="rect" id="node6" href="$classbfl_1_1MeasurementModel.html#a6cca2022b576c9dbb61e73b83a10c6ee" title="bfl::MeasurementModel\l::getOutputSize" alt="" coords="197,236,357,275"/>
+<area shape="rect" id="node7" href="$classbfl_1_1MeasurementModel.html#aa06e0643805551a981bcc013ad44c829" title="bfl::MeasurementModel\l::innovation" alt="" coords="197,299,357,338"/>
+<area shape="rect" id="node8" href="$classbfl_1_1GaussianMixture.html#af4fd865a97ac27c72510cfbf9429bd97" title="bfl::GaussianMixture\l::mean" alt="" coords="637,307,780,346"/>
+<area shape="rect" id="node9" href="$classbfl_1_1MeasurementModel.html#ad372b720cef4e6bc0ac2489f4098bfc9" title="bfl::MeasurementModel\l::measure" alt="" coords="197,424,357,463"/>
+<area shape="rect" id="node10" href="$namespacebfl_1_1sigma__point.html#afe170453152d4f96db4dad71bd9be9a3" title="bfl::sigma_point::unscented\l_transform" alt="" coords="185,362,369,400"/>
+<area shape="rect" id="node11" href="$namespacebfl_1_1sigma__point.html#ab919aca5fccc30ee2acd5cd966cd9dc9" title="bfl::sigma_point::sigma\l_point" alt="" coords="420,246,577,284"/>
+<area shape="rect" id="node13" href="$namespacebfl_1_1directional__statistics.html#ad8758aac208bc2baa75aad514a3f53e6" title="bfl::directional_statistics\l::directional_mean" alt="" coords="417,362,580,400"/>
+<area shape="rect" id="node14" href="$namespacebfl_1_1directional__statistics.html#a18bffca88c7ea5f4ea11d2ad910736fe" title="bfl::directional_statistics\l::directional_sub" alt="" coords="417,424,580,463"/>
+<area shape="rect" id="node12" href="$namespacebfl_1_1directional__statistics.html#af9984a4df2b3f6f0bc0c264783181123" title="bfl::directional_statistics\l::directional_add" alt="" coords="628,244,790,283"/>
+</map>

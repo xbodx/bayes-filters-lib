@@ -1,0 +1,243 @@
+The \href{https://en.wikipedia.org/wiki/Decorator_pattern}{\tt {\itshape Decroator patter}} is extensively used within the library to dynamically add new functionality to other classes. This is particularly useful to design flexible and reusable object-\/oriented software providing an alternative to subclassing. In particular, when there are {\bfseries several independent ways of extending functionality} and it is difficult to predict, at design time, what combinations of such functionalities will be needed, subclassing would require to make every possible (or most of the) combination of such functionalities, while {\bfseries decorators provide much more flexibility combining functionalities on a per-\/use basis and foster code reuse}.~\newline
+
+
+The following snippet code shows how to decorate filtering classes like \mbox{\hyperlink{classbfl_1_1StateModel}{State\+Model}}, Observation\+Model, \mbox{\hyperlink{classbfl_1_1PFPrediction}{P\+F\+Prediction}} and \mbox{\hyperlink{classbfl_1_1PFCorrection}{P\+F\+Correction}}.
+
+
+\begin{DoxyCodeInclude}
+1 \textcolor{preprocessor}{#include <iostream>}
+2 \textcolor{preprocessor}{#include <memory>}
+3 \textcolor{preprocessor}{#include <random>}
+4 
+5 \textcolor{preprocessor}{#include <\mbox{\hyperlink{BootstrapCorrection_8h}{BayesFilters/BootstrapCorrection.h}}>}
+6 \textcolor{preprocessor}{#include <\mbox{\hyperlink{DrawParticles_8h}{BayesFilters/DrawParticles.h}}>}
+7 \textcolor{preprocessor}{#include <\mbox{\hyperlink{GaussianLikelihood_8h}{BayesFilters/GaussianLikelihood.h}}>}
+8 \textcolor{preprocessor}{#include <\mbox{\hyperlink{InitSurveillanceAreaGrid_8h}{BayesFilters/InitSurveillanceAreaGrid.h}}>}
+9 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedLinearSensor_8h}{BayesFilters/SimulatedLinearSensor.h}}>}
+10 \textcolor{preprocessor}{#include <\mbox{\hyperlink{LikelihoodModel_8h}{BayesFilters/LikelihoodModel.h}}>}
+11 \textcolor{preprocessor}{#include <\mbox{\hyperlink{MeasurementModelDecorator_8h}{BayesFilters/MeasurementModelDecorator.h}}>}
+12 \textcolor{preprocessor}{#include <\mbox{\hyperlink{ParticleSet_8h}{BayesFilters/ParticleSet.h}}>}
+13 \textcolor{preprocessor}{#include <\mbox{\hyperlink{ParticleSetInitialization_8h}{BayesFilters/ParticleSetInitialization.h}}>}
+14 \textcolor{preprocessor}{#include <\mbox{\hyperlink{PFCorrectionDecorator_8h}{BayesFilters/PFCorrectionDecorator.h}}>}
+15 \textcolor{preprocessor}{#include <\mbox{\hyperlink{PFPredictionDecorator_8h}{BayesFilters/PFPredictionDecorator.h}}>}
+16 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedStateModel_8h}{BayesFilters/SimulatedStateModel.h}}>}
+17 \textcolor{preprocessor}{#include <\mbox{\hyperlink{Resampling_8h}{BayesFilters/Resampling.h}}>}
+18 \textcolor{preprocessor}{#include <\mbox{\hyperlink{StateModelDecorator_8h}{BayesFilters/StateModelDecorator.h}}>}
+19 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SIS_8h}{BayesFilters/SIS.h}}>}
+20 \textcolor{preprocessor}{#include <\mbox{\hyperlink{WhiteNoiseAcceleration_8h}{BayesFilters/WhiteNoiseAcceleration.h}}>}
+21 \textcolor{preprocessor}{#include <\mbox{\hyperlink{utils_8h}{BayesFilters/utils.h}}>}
+22 \textcolor{preprocessor}{#include <Eigen/Dense>}
+23 
+24 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacebfl}{bfl}};
+25 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceEigen}{Eigen}};
+26 
+27 
+28 \textcolor{keyword}{class }DecoratedWNA : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1StateModelDecorator}{StateModelDecorator}}
+29 \{
+30 \textcolor{keyword}{public}:
+31     DecoratedWNA(std::unique\_ptr<StateModel> state\_model) noexcept :
+32         \mbox{\hyperlink{classbfl_1_1StateModelDecorator}{StateModelDecorator}}(std::move(state\_model))
+33     \{ \};
+34 
+35 
+36     \textcolor{keywordtype}{void} motion(\textcolor{keyword}{const} Eigen::Ref<const Eigen::MatrixXd>& cur\_states, Eigen::Ref<Eigen::MatrixXd> mot\_states
+      )\textcolor{keyword}{ override}
+37 \textcolor{keyword}{    }\{
+38         std::cout << \textcolor{stringliteral}{"Decorator: DecoratedWNA::motion()."} << std::endl;
+39 
+40         \mbox{\hyperlink{classbfl_1_1StateModelDecorator_af0ffeccf4bfcf8ddb36f3e6704fae7d2}{StateModelDecorator::motion}}(cur\_states, mot\_states);
+41     \}
+42 \};
+43 
+44 
+45 \textcolor{keyword}{class }DecoratedLinearSensor : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1MeasurementModelDecorator}{MeasurementModelDecorator}}
+46 \{
+47 \textcolor{keyword}{public}:
+48     DecoratedLinearSensor(std::unique\_ptr<MeasurementModel> observation\_model) noexcept :
+49         \mbox{\hyperlink{classbfl_1_1MeasurementModelDecorator}{MeasurementModelDecorator}}(std::move(observation\_model))
+50     \{ \}
+51 
+52 
+53     std::pair<bool, bfl::Data> measure()\textcolor{keyword}{ const override}
+54 \textcolor{keyword}{    }\{
+55         std::cout << \textcolor{stringliteral}{"Decorator: DecoratedLinearSensor::measure()."} << std::endl;
+56 
+57         \textcolor{keywordflow}{return} \mbox{\hyperlink{classbfl_1_1MeasurementModelDecorator_a36194c2f6abd7e13a417c3663febe921}{MeasurementModelDecorator::measure}}();
+58     \}
+59 \};
+60 
+61 
+62 \textcolor{keyword}{class }DecoratedDrawParticles : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1PFPredictionDecorator}{PFPredictionDecorator}}
+63 \{
+64 \textcolor{keyword}{public}:
+65     DecoratedDrawParticles(std::unique\_ptr<PFPrediction> prediction) noexcept :
+66         \mbox{\hyperlink{classbfl_1_1PFPredictionDecorator}{PFPredictionDecorator}}(std::move(prediction))
+67     \{ \}
+68 
+69 \textcolor{keyword}{protected}:
+70     \textcolor{keywordtype}{void} predictStep(\textcolor{keyword}{const} \mbox{\hyperlink{classbfl_1_1ParticleSet}{ParticleSet}}& prev\_particles, \mbox{\hyperlink{classbfl_1_1ParticleSet}{ParticleSet}}& pred\_particles)\textcolor{keyword}{
+       override}
+71 \textcolor{keyword}{    }\{
+72         std::cout << \textcolor{stringliteral}{"Decorator: DecoratedDrawParticles::predictStep()."} << std::endl;
+73 
+74         \mbox{\hyperlink{classbfl_1_1PFPredictionDecorator_a570bd3a338034e65c1fa5abee429e717}{PFPredictionDecorator::predictStep}}(prev\_particles, pred\_particles
+      );
+75     \}
+76 \};
+77 
+78 
+79 \textcolor{keyword}{class }DecoratedBootstrapCorrection : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator}{PFCorrectionDecorator}}
+80 \{
+81 \textcolor{keyword}{public}:
+82     DecoratedBootstrapCorrection(std::unique\_ptr<PFCorrection> correction) noexcept :
+83         \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator}{PFCorrectionDecorator}}(std::move(correction))
+84     \{ \}
+85 
+86 \textcolor{keyword}{protected}:
+87     \textcolor{keywordtype}{void} correctStep(\textcolor{keyword}{const} \mbox{\hyperlink{classbfl_1_1ParticleSet}{ParticleSet}}& pred\_particles, \mbox{\hyperlink{classbfl_1_1ParticleSet}{ParticleSet}}& cor\_particles)\textcolor{keyword}{
+       override}
+88 \textcolor{keyword}{    }\{
+89         std::cout << \textcolor{stringliteral}{"Decorator: DecoratedBootstrapCorrection::correctStep()."} << std::endl;
+90 
+91         \mbox{\hyperlink{classbfl_1_1PFCorrectionDecorator_a83bb9ac8ba168f99f211973ae634391a}{PFCorrectionDecorator::correctStep}}(pred\_particles, cor\_particles)
+      ;
+92     \}
+93 \};
+94 
+95 
+96 \textcolor{keyword}{class }SISSimulation : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1SIS}{SIS}}
+97 \{
+98 \textcolor{keyword}{public}:
+99     SISSimulation
+100     (
+101         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle,
+102         std::size\_t state\_size,
+103         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} simulation\_steps,
+104         std::unique\_ptr<ParticleSetInitialization> initialization,
+105         std::unique\_ptr<PFPrediction> prediction,
+106         std::unique\_ptr<PFCorrection> correction,
+107         std::unique\_ptr<Resampling> resampling
+108     ) noexcept :
+109         \mbox{\hyperlink{classbfl_1_1SIS}{SIS}}(num\_particle, state\_size, std::move(initialization), std::move(prediction), std::move(
+      correction), std::move(resampling)),
+110         simulation\_steps\_(simulation\_steps)
+111     \{ \}
+112 
+113 \textcolor{keyword}{protected}:
+114     \textcolor{keywordtype}{bool} runCondition()
+115     \{
+116         \textcolor{keywordflow}{if} (getFilteringStep() < simulation\_steps\_)
+117             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+118         \textcolor{keywordflow}{else}
+119             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+120     \}
+121 
+122 \textcolor{keyword}{private}:
+123     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} simulation\_steps\_;
+124 \};
+125 
+126 
+127 \textcolor{keywordtype}{int} main()
+128 \{
+129     \textcolor{comment}{/* A set of parameters needed to run a SIS particle filter in a simulated environment. */}
+130     \textcolor{keywordtype}{double} surv\_x = 1000.0;
+131     \textcolor{keywordtype}{double} surv\_y = 1000.0;
+132     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle\_x = 100;
+133     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle\_y = 100;
+134     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle = num\_particle\_x * num\_particle\_y;
+135     Vector4d initial\_state(10.0f, 0.0f, 10.0f, 0.0f);
+136     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} simulation\_time = 10;
+137     std::size\_t state\_size = 4;
+138 
+139     \textcolor{comment}{/* Step 1 - Initialization */}
+140     \textcolor{comment}{/* Initialize initialization class. */}
+141     std::unique\_ptr<ParticleSetInitialization> grid\_initialization = 
+      utils::make\_unique<InitSurveillanceAreaGrid>(surv\_x, surv\_y, num\_particle\_x, num\_particle\_y);
+142 
+143 
+144     \textcolor{comment}{/* Step 2 - Prediction */}
+145     \textcolor{comment}{/* Step 2.1 - Define the state model */}
+146     \textcolor{comment}{/* Initialize a white noise acceleration state model. */}
+147     std::unique\_ptr<StateModel> wna = utils::make\_unique<WhiteNoiseAcceleration>();
+148 
+149     \textcolor{comment}{/* Step 2.1.1 - Define a decoration for the state model */}
+150     \textcolor{comment}{/* Initialize a white noise acceleration decorator. */}
+151     std::unique\_ptr<StateModel> decorated\_wna = utils::make\_unique<DecoratedWNA>(std::move(wna));
+152 
+153     \textcolor{comment}{/* Step 2.2 - Define the prediction step */}
+154     \textcolor{comment}{/* Initialize the particle filter prediction step and pass the ownership of the state model. */}
+155     std::unique\_ptr<PFPrediction> pf\_prediction = utils::make\_unique<DrawParticles>();
+156     pf\_prediction->setStateModel(std::move(decorated\_wna));
+157 
+158     \textcolor{comment}{/* Step 2.2.1 - Define a decoration for the prediction step */}
+159     \textcolor{comment}{/* Initialize a particle filter prediction decorator. */}
+160     std::unique\_ptr<PFPrediction> decorated\_prediction = utils::make\_unique<DecoratedDrawParticles>(
+      std::move(pf\_prediction));
+161 
+162 
+163     \textcolor{comment}{/* Step 3 - Correction */}
+164     \textcolor{comment}{/* Step 3.1 - Define where the measurement are originated from (either simulated or from a real
+       process) */}
+165     \textcolor{comment}{/* Initialize simulaterd target model, a white noise acceleration, and measurements, a MeasurementModel
+       decoration for the linear sensor. */}
+166     std::unique\_ptr<StateModel> target\_model = utils::make\_unique<WhiteNoiseAcceleration>();
+167     std::unique\_ptr<SimulatedStateModel> simulated\_state\_model = utils::make\_unique<SimulatedStateModel>(
+      std::move(target\_model), initial\_state, simulation\_time);
+168 
+169     \textcolor{comment}{/* Initialize a measurement model (a linear sensor reading x and y coordinates). */}
+170     std::unique\_ptr<MeasurementModel> simulated\_linear\_sensor = utils::make\_unique<SimulatedLinearSensor>(
+      std::move(simulated\_state\_model));
+171 
+172     \textcolor{comment}{/* Step 3.1.1 - Define a decoration for the measurement model */}
+173     \textcolor{comment}{/* Initialize a white noise acceleration decorator */}
+174     std::unique\_ptr<MeasurementModel> decorated\_linearsensor = utils::make\_unique<DecoratedLinearSensor>(
+      std::move(simulated\_linear\_sensor));
+175 
+176     \textcolor{comment}{/* Step 3.2 - Define the likelihood model */}
+177     \textcolor{comment}{/* Initialize the the exponential likelihood, a PFCorrection decoration of the particle filter
+       correction step. */}
+178     std::unique\_ptr<LikelihoodModel> exp\_likelihood = utils::make\_unique<GaussianLikelihood>();
+179 
+180     \textcolor{comment}{/* Step 3.3 - Define the correction step */}
+181     \textcolor{comment}{/* Initialize the particle filter correction step and pass the ownership of the measurement model. */}
+182     std::unique\_ptr<PFCorrection> pf\_correction = utils::make\_unique<BoostrapCorrection>();
+183     pf\_correction->setLikelihoodModel(std::move(exp\_likelihood));
+184     pf\_correction->setMeasurementModel(std::move(decorated\_linearsensor));
+185 
+186     \textcolor{comment}{/* Initialize a update particle decorator */}
+187     std::unique\_ptr<PFCorrection> decorated\_correction = utils::make\_unique<DecoratedBootstrapCorrection>(
+      std::move(pf\_correction));
+188 
+189 
+190     \textcolor{comment}{/* Step 4 - Resampling */}
+191     \textcolor{comment}{/* Initialize a resampling algorithm */}
+192     std::unique\_ptr<Resampling> resampling = utils::make\_unique<Resampling>();
+193 
+194 
+195     \textcolor{comment}{/* Step 5 - Assemble the particle filter */}
+196     std::cout << \textcolor{stringliteral}{"Constructing SIS particle filter..."} << std::flush;
+197     SISSimulation sis\_pf(num\_particle, state\_size, simulation\_time, std::move(grid\_initialization), 
+      std::move(decorated\_prediction), std::move(decorated\_correction), std::move(resampling));
+198     std::cout << \textcolor{stringliteral}{"done!"} << std::endl;
+199 
+200 
+201     \textcolor{comment}{/* Step 6 - Prepare the filter to be run */}
+202     std::cout << \textcolor{stringliteral}{"Booting SIS particle filter..."} << std::flush;
+203     sis\_pf.boot();
+204     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+205 
+206 
+207     \textcolor{comment}{/* Step 7 - Run the filter and wait until it is closed */}
+208     \textcolor{comment}{/* Note that since this is a simulation, the filter will end upon simulation termination */}
+209     std::cout << \textcolor{stringliteral}{"Running SIS particle filter..."} << std::flush;
+210     sis\_pf.run();
+211     std::cout << \textcolor{stringliteral}{"waiting..."} << std::endl;
+212     \textcolor{keywordflow}{if} (!sis\_pf.wait())
+213         \textcolor{keywordflow}{return} EXIT\_FAILURE;
+214     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+215 
+216 
+217     \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+218 \}
+\end{DoxyCodeInclude}
+ 

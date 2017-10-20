@@ -1,0 +1,209 @@
+\hypertarget{classbfl_1_1GaussianPrediction}{}\section{bfl\+:\+:Gaussian\+Prediction Class Reference}
+\label{classbfl_1_1GaussianPrediction}\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+
+
+{\ttfamily \#include $<$Gaussian\+Prediction.\+h$>$}
+
+
+
+Inheritance diagram for bfl\+:\+:Gaussian\+Prediction\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{classbfl_1_1GaussianPrediction__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a940d6b50429f758b4e085b9b77918a0d}{$\sim$\+Gaussian\+Prediction}} () noexcept
+\item 
+void \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a37195b6f9a8799ac3d357500b8142676}{predict}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&prev\+\_\+state, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&pred\+\_\+state)
+\item 
+bool \mbox{\hyperlink{classbfl_1_1GaussianPrediction_ae647821cf920ea81f981ebc9260cdbe6}{skip}} (const std\+::string \&what\+\_\+step, const bool status)
+\item 
+bool \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a6885530a677199241b2ac11ccdb09688}{get\+Skip\+State}} ()
+\item 
+bool \mbox{\hyperlink{classbfl_1_1GaussianPrediction_aaf3743111a493b90092b7ead9cbf7825}{get\+Skip\+Exogenous}} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbfl_1_1GaussianPrediction_aacb5ac9c1fdf4e53c84fb681c650c680}{Gaussian\+Prediction}} () noexcept
+\item 
+\mbox{\hyperlink{classbfl_1_1GaussianPrediction_a8673dfd2a3fbbf84ec99db86f28860e6}{Gaussian\+Prediction}} (\mbox{\hyperlink{classbfl_1_1GaussianPrediction}{Gaussian\+Prediction}} \&\&g\+\_\+prediction) noexcept
+\item 
+virtual void \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a35e7c490378c9bb48e4becad7fdcb2a1}{predict\+Step}} (const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&prev\+\_\+state, \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&pred\+\_\+state)=0
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a957fc640d2737bf98107ab59b5a4afbf}{skip\+\_\+prediction\+\_\+}} = false
+\item 
+bool \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a666cc032dab917985809e2851b0af743}{skip\+\_\+state\+\_\+}} = false
+\item 
+bool \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a15963cb3fce6d30dccc7ca8eb2297573}{skip\+\_\+exogenous\+\_\+}} = false
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a6270a27fe93ac0118907f8cbd64005c8}{Gaussian\+Prediction\+Decorator}}
+\item 
+class \mbox{\hyperlink{classbfl_1_1GaussianPrediction_a698dcea28e3e0e4b41438a53c8b53a17}{G\+P\+F\+Prediction}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Gaussian\+Prediction.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a940d6b50429f758b4e085b9b77918a0d}\label{classbfl_1_1GaussianPrediction_a940d6b50429f758b4e085b9b77918a0d}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!````~Gaussian\+Prediction@{$\sim$\+Gaussian\+Prediction}}
+\index{````~Gaussian\+Prediction@{$\sim$\+Gaussian\+Prediction}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{$\sim$\+Gaussian\+Prediction()}{~GaussianPrediction()}}
+{\footnotesize\ttfamily virtual bfl\+::\+Gaussian\+Prediction\+::$\sim$\+Gaussian\+Prediction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 16 of file Gaussian\+Prediction.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_aacb5ac9c1fdf4e53c84fb681c650c680}\label{classbfl_1_1GaussianPrediction_aacb5ac9c1fdf4e53c84fb681c650c680}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!Gaussian\+Prediction@{Gaussian\+Prediction}}
+\index{Gaussian\+Prediction@{Gaussian\+Prediction}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{Gaussian\+Prediction()}{GaussianPrediction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Gaussian\+Prediction\+::\+Gaussian\+Prediction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 10 of file Gaussian\+Prediction.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a8673dfd2a3fbbf84ec99db86f28860e6}\label{classbfl_1_1GaussianPrediction_a8673dfd2a3fbbf84ec99db86f28860e6}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!Gaussian\+Prediction@{Gaussian\+Prediction}}
+\index{Gaussian\+Prediction@{Gaussian\+Prediction}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{Gaussian\+Prediction()}{GaussianPrediction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Gaussian\+Prediction\+::\+Gaussian\+Prediction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbfl_1_1GaussianPrediction}{Gaussian\+Prediction}} \&\&}]{g\+\_\+prediction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line 13 of file Gaussian\+Prediction.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_aaf3743111a493b90092b7ead9cbf7825}\label{classbfl_1_1GaussianPrediction_aaf3743111a493b90092b7ead9cbf7825}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!get\+Skip\+Exogenous@{get\+Skip\+Exogenous}}
+\index{get\+Skip\+Exogenous@{get\+Skip\+Exogenous}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{get\+Skip\+Exogenous()}{getSkipExogenous()}}
+{\footnotesize\ttfamily bool Gaussian\+Prediction\+::get\+Skip\+Exogenous (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 46 of file Gaussian\+Prediction.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a6885530a677199241b2ac11ccdb09688}\label{classbfl_1_1GaussianPrediction_a6885530a677199241b2ac11ccdb09688}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!get\+Skip\+State@{get\+Skip\+State}}
+\index{get\+Skip\+State@{get\+Skip\+State}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{get\+Skip\+State()}{getSkipState()}}
+{\footnotesize\ttfamily bool Gaussian\+Prediction\+::get\+Skip\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file Gaussian\+Prediction.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a37195b6f9a8799ac3d357500b8142676}\label{classbfl_1_1GaussianPrediction_a37195b6f9a8799ac3d357500b8142676}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!predict@{predict}}
+\index{predict@{predict}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily void Gaussian\+Prediction\+::predict (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{prev\+\_\+state,  }\item[{\mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{pred\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file Gaussian\+Prediction.\+cpp.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a35e7c490378c9bb48e4becad7fdcb2a1}\label{classbfl_1_1GaussianPrediction_a35e7c490378c9bb48e4becad7fdcb2a1}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!predict\+Step@{predict\+Step}}
+\index{predict\+Step@{predict\+Step}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{predict\+Step()}{predictStep()}}
+{\footnotesize\ttfamily virtual void bfl\+::\+Gaussian\+Prediction\+::predict\+Step (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{prev\+\_\+state,  }\item[{\mbox{\hyperlink{classbfl_1_1GaussianMixture}{Gaussian\+Mixture}} \&}]{pred\+\_\+state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classbfl_1_1UKFPrediction_a0ffba56fa1aa4d71c6872e1d76bd2f02}{bfl\+::\+U\+K\+F\+Prediction}}, and \mbox{\hyperlink{classbfl_1_1KFPrediction_aa71d6b8ac030c54e86d3e91a94bb2db9}{bfl\+::\+K\+F\+Prediction}}.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_ae647821cf920ea81f981ebc9260cdbe6}\label{classbfl_1_1GaussianPrediction_ae647821cf920ea81f981ebc9260cdbe6}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!skip@{skip}}
+\index{skip@{skip}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{skip()}{skip()}}
+{\footnotesize\ttfamily bool Gaussian\+Prediction\+::skip (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{what\+\_\+step,  }\item[{const bool}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Gaussian\+Prediction.\+cpp.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a6270a27fe93ac0118907f8cbd64005c8}\label{classbfl_1_1GaussianPrediction_a6270a27fe93ac0118907f8cbd64005c8}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!Gaussian\+Prediction\+Decorator@{Gaussian\+Prediction\+Decorator}}
+\index{Gaussian\+Prediction\+Decorator@{Gaussian\+Prediction\+Decorator}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{Gaussian\+Prediction\+Decorator}{GaussianPredictionDecorator}}
+{\footnotesize\ttfamily friend class Gaussian\+Prediction\+Decorator\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 40 of file Gaussian\+Prediction.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a698dcea28e3e0e4b41438a53c8b53a17}\label{classbfl_1_1GaussianPrediction_a698dcea28e3e0e4b41438a53c8b53a17}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!G\+P\+F\+Prediction@{G\+P\+F\+Prediction}}
+\index{G\+P\+F\+Prediction@{G\+P\+F\+Prediction}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{G\+P\+F\+Prediction}{GPFPrediction}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classbfl_1_1GPFPrediction}{G\+P\+F\+Prediction}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 42 of file Gaussian\+Prediction.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a15963cb3fce6d30dccc7ca8eb2297573}\label{classbfl_1_1GaussianPrediction_a15963cb3fce6d30dccc7ca8eb2297573}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!skip\+\_\+exogenous\+\_\+@{skip\+\_\+exogenous\+\_\+}}
+\index{skip\+\_\+exogenous\+\_\+@{skip\+\_\+exogenous\+\_\+}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{skip\+\_\+exogenous\+\_\+}{skip\_exogenous\_}}
+{\footnotesize\ttfamily bool bfl\+::\+Gaussian\+Prediction\+::skip\+\_\+exogenous\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 38 of file Gaussian\+Prediction.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a957fc640d2737bf98107ab59b5a4afbf}\label{classbfl_1_1GaussianPrediction_a957fc640d2737bf98107ab59b5a4afbf}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!skip\+\_\+prediction\+\_\+@{skip\+\_\+prediction\+\_\+}}
+\index{skip\+\_\+prediction\+\_\+@{skip\+\_\+prediction\+\_\+}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{skip\+\_\+prediction\+\_\+}{skip\_prediction\_}}
+{\footnotesize\ttfamily bool bfl\+::\+Gaussian\+Prediction\+::skip\+\_\+prediction\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 34 of file Gaussian\+Prediction.\+h.
+
+\mbox{\Hypertarget{classbfl_1_1GaussianPrediction_a666cc032dab917985809e2851b0af743}\label{classbfl_1_1GaussianPrediction_a666cc032dab917985809e2851b0af743}} 
+\index{bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}!skip\+\_\+state\+\_\+@{skip\+\_\+state\+\_\+}}
+\index{skip\+\_\+state\+\_\+@{skip\+\_\+state\+\_\+}!bfl\+::\+Gaussian\+Prediction@{bfl\+::\+Gaussian\+Prediction}}
+\subsubsection{\texorpdfstring{skip\+\_\+state\+\_\+}{skip\_state\_}}
+{\footnotesize\ttfamily bool bfl\+::\+Gaussian\+Prediction\+::skip\+\_\+state\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 36 of file Gaussian\+Prediction.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/include/\+Bayes\+Filters/\mbox{\hyperlink{GaussianPrediction_8h}{Gaussian\+Prediction.\+h}}\item 
+/\+Users/\+Claudio/\+Git\+Hub/bayes-\/filters-\/lib/src/\+Bayes\+Filters/src/\mbox{\hyperlink{GaussianPrediction_8cpp}{Gaussian\+Prediction.\+cpp}}\end{DoxyCompactItemize}

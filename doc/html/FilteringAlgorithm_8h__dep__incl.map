@@ -1,0 +1,13 @@
+<map id="/Users/Claudio/GitHub/bayes&#45;filters&#45;lib/src/BayesFilters/include/BayesFilters/FilteringAlgorithm.h" name="/Users/Claudio/GitHub/bayes&#45;filters&#45;lib/src/BayesFilters/include/BayesFilters/FilteringAlgorithm.h">
+<area shape="rect" id="node2" href="$FilteringContext_8h.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/include/BayesFilters\l/FilteringContext.h" alt="" coords="37,119,258,184"/>
+<area shape="rect" id="node4" href="$GaussianFilter_8h.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/include/BayesFilters\l/GaussianFilter.h" alt="" coords="290,119,512,184"/>
+<area shape="rect" id="node6" href="$ParticleFilter_8h.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/include/BayesFilters\l/ParticleFilter.h" alt="" coords="548,119,769,184"/>
+<area shape="rect" id="node10" href="$UnscentedKalmanFilter_8h.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/include/BayesFilters\l/UnscentedKalmanFilter.h" alt="" coords="793,119,1014,184"/>
+<area shape="rect" id="node12" href="$FilteringAlgorithm_8cpp.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/src/FilteringAlgorithm.cpp" alt="" coords="1039,125,1291,177"/>
+<area shape="rect" id="node3" href="$FilteringContext_8cpp.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/src/FilteringContext.cpp" alt="" coords="5,239,247,291"/>
+<area shape="rect" id="node5" href="$GaussianFilter_8cpp.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/src/GaussianFilter.cpp" alt="" coords="272,239,506,291"/>
+<area shape="rect" id="node7" href="$SIS_8h.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/include/BayesFilters/SIS.h" alt="" coords="530,239,787,291"/>
+<area shape="rect" id="node9" href="$ParticleFilter_8cpp.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/src/ParticleFilter.cpp" alt="" coords="811,239,1033,291"/>
+<area shape="rect" id="node8" href="$SIS_8cpp.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/src/SIS.cpp" alt="" coords="573,345,744,397"/>
+<area shape="rect" id="node11" href="$UnscentedKalmanFilter_8cpp.html" title="/Users/Claudio/GitHub\l/bayes&#45;filters&#45;lib/src\l/BayesFilters/src/UnscentedKalman\lFilter.cpp" alt="" coords="1057,232,1289,297"/>
+</map>

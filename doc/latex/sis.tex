@@ -1,0 +1,151 @@
+The following snippet code shows how to run a Sequential Importance Sampling (S\+IS) particle filter using the implementation provided by the library.~\newline
+
+
+
+\begin{DoxyCodeInclude}
+1 \textcolor{preprocessor}{#include <iostream>}
+2 \textcolor{preprocessor}{#include <memory>}
+3 
+4 \textcolor{preprocessor}{#include <\mbox{\hyperlink{BootstrapCorrection_8h}{BayesFilters/BootstrapCorrection.h}}>}
+5 \textcolor{preprocessor}{#include <\mbox{\hyperlink{DrawParticles_8h}{BayesFilters/DrawParticles.h}}>}
+6 \textcolor{preprocessor}{#include <\mbox{\hyperlink{GaussianLikelihood_8h}{BayesFilters/GaussianLikelihood.h}}>}
+7 \textcolor{preprocessor}{#include <\mbox{\hyperlink{InitSurveillanceAreaGrid_8h}{BayesFilters/InitSurveillanceAreaGrid.h}}>}
+8 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedLinearSensor_8h}{BayesFilters/SimulatedLinearSensor.h}}>}
+9 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SimulatedStateModel_8h}{BayesFilters/SimulatedStateModel.h}}>}
+10 \textcolor{preprocessor}{#include <\mbox{\hyperlink{Resampling_8h}{BayesFilters/Resampling.h}}>}
+11 \textcolor{preprocessor}{#include <\mbox{\hyperlink{SIS_8h}{BayesFilters/SIS.h}}>}
+12 \textcolor{preprocessor}{#include <\mbox{\hyperlink{WhiteNoiseAcceleration_8h}{BayesFilters/WhiteNoiseAcceleration.h}}>}
+13 \textcolor{preprocessor}{#include <\mbox{\hyperlink{utils_8h}{BayesFilters/utils.h}}>}
+14 \textcolor{preprocessor}{#include <Eigen/Dense>}
+15 
+16 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacebfl}{bfl}};
+17 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespaceEigen}{Eigen}};
+18 
+19 
+20 \textcolor{keyword}{class }SISSimulation : \textcolor{keyword}{public} \mbox{\hyperlink{classbfl_1_1SIS}{SIS}}
+21 \{
+22 \textcolor{keyword}{public}:
+23     SISSimulation
+24     (
+25         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle,
+26         std::size\_t state\_size,
+27         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} simulation\_steps,
+28         std::unique\_ptr<ParticleSetInitialization> initialization,
+29         std::unique\_ptr<PFPrediction> prediction,
+30         std::unique\_ptr<PFCorrection> correction,
+31         std::unique\_ptr<Resampling> resampling
+32     ) noexcept :
+33         \mbox{\hyperlink{classbfl_1_1SIS}{SIS}}(num\_particle, state\_size, std::move(initialization), std::move(prediction), std::move(
+      correction), std::move(resampling)),
+34         simulation\_steps\_(simulation\_steps)
+35     \{ \}
+36 
+37 \textcolor{keyword}{protected}:
+38     \textcolor{keywordtype}{bool} runCondition()\textcolor{keyword}{ override}
+39 \textcolor{keyword}{    }\{
+40         \textcolor{keywordflow}{if} (getFilteringStep() < simulation\_steps\_)
+41             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+42         \textcolor{keywordflow}{else}
+43             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+44     \}
+45 
+46 \textcolor{keyword}{private}:
+47     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} simulation\_steps\_;
+48 \};
+49 
+50 
+51 \textcolor{keywordtype}{int} main()
+52 \{
+53     std::cout << \textcolor{stringliteral}{"Running a SIS particle filter on a simulated target."} << std::endl;
+54     std::cout << \textcolor{stringliteral}{"Data is logged in the test folder with prefix testSIS."} << std::endl;
+55 
+56     \textcolor{comment}{/* A set of parameters needed to run a SIS particle filter in a simulated environment. */}
+57     \textcolor{keywordtype}{double} surv\_x = 1000.0;
+58     \textcolor{keywordtype}{double} surv\_y = 1000.0;
+59     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle\_x = 100;
+60     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle\_y = 100;
+61     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_particle = num\_particle\_x * num\_particle\_y;
+62     Vector4d initial\_state(10.0f, 0.0f, 10.0f, 0.0f);
+63     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} simulation\_time = 100;
+64     std::size\_t state\_size = 4;
+65 
+66     \textcolor{comment}{/* Step 1 - Initialization */}
+67     \textcolor{comment}{/* Initialize initialization class. */}
+68     std::unique\_ptr<ParticleSetInitialization> grid\_initialization = 
+      utils::make\_unique<InitSurveillanceAreaGrid>(surv\_x, surv\_y, num\_particle\_x, num\_particle\_y);
+69 
+70 
+71     \textcolor{comment}{/* Step 2 - Prediction */}
+72     \textcolor{comment}{/* Step 2.1 - Define the state model */}
+73     \textcolor{comment}{/* Initialize a white noise acceleration state model. */}
+74     \textcolor{keywordtype}{double} T = 1.0f;
+75     \textcolor{keywordtype}{double} tilde\_q = 10.0f;
+76 
+77     std::unique\_ptr<StateModel> wna = utils::make\_unique<WhiteNoiseAcceleration>(T, tilde\_q);
+78 
+79     \textcolor{comment}{/* Step 2.2 - Define the prediction step */}
+80     \textcolor{comment}{/* Initialize the particle filter prediction step and pass the ownership of the state model. */}
+81     std::unique\_ptr<PFPrediction> pf\_prediction = utils::make\_unique<DrawParticles>();
+82     pf\_prediction->setStateModel(std::move(wna));
+83 
+84 
+85     \textcolor{comment}{/* Step 3 - Correction */}
+86     \textcolor{comment}{/* Step 3.1 - Define where the measurement are originated from (either simulated or from a real
+       process) */}
+87     \textcolor{comment}{/* Initialize simulaterd target model with a white noise acceleration. */}
+88     std::unique\_ptr<StateModel> target\_model = utils::make\_unique<WhiteNoiseAcceleration>(T, tilde\_q);
+89     std::unique\_ptr<SimulatedStateModel> simulated\_state\_model = utils::make\_unique<SimulatedStateModel>(
+      std::move(target\_model), initial\_state, simulation\_time);
+90     simulated\_state\_model->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testSIS"});
+91 
+92     \textcolor{comment}{/* Initialize a measurement model (a linear sensor reading x and y coordinates). */}
+93     std::unique\_ptr<MeasurementModel> simulated\_linear\_sensor = utils::make\_unique<SimulatedLinearSensor>(
+      std::move(simulated\_state\_model));
+94     simulated\_linear\_sensor->enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testSIS"});
+95 
+96 
+97     \textcolor{comment}{/* Step 3.3 - Define the likelihood model */}
+98     \textcolor{comment}{/* Initialize the the exponential likelihood, a PFCorrection decoration of the particle filter
+       correction step. */}
+99     std::unique\_ptr<LikelihoodModel> exp\_likelihood = utils::make\_unique<GaussianLikelihood>();
+100 
+101     \textcolor{comment}{/* Step 3.4 - Define the correction step */}
+102     \textcolor{comment}{/* Initialize the particle filter correction step and pass the ownership of the measurement model. */}
+103     std::unique\_ptr<PFCorrection> pf\_correction = utils::make\_unique<BoostrapCorrection>();
+104     pf\_correction->setLikelihoodModel(std::move(exp\_likelihood));
+105     pf\_correction->setMeasurementModel(std::move(simulated\_linear\_sensor));
+106 
+107 
+108     \textcolor{comment}{/* Step 4 - Resampling */}
+109     \textcolor{comment}{/* Initialize a resampling algorithm */}
+110     std::unique\_ptr<Resampling> resampling = utils::make\_unique<Resampling>();
+111 
+112 
+113     \textcolor{comment}{/* Step 5 - Assemble the particle filter */}
+114     std::cout << \textcolor{stringliteral}{"Constructing SIS particle filter..."} << std::flush;
+115     SISSimulation sis\_pf(num\_particle, state\_size, simulation\_time, std::move(grid\_initialization), 
+      std::move(pf\_prediction), std::move(pf\_correction), std::move(resampling));
+116     sis\_pf.enable\_log(\textcolor{stringliteral}{"."}, \textcolor{stringliteral}{"testSIS"});
+117     std::cout << \textcolor{stringliteral}{"done!"} << std::endl;
+118 
+119 
+120     \textcolor{comment}{/* Step 6 - Prepare the filter to be run */}
+121     std::cout << \textcolor{stringliteral}{"Booting SIS particle filter..."} << std::flush;
+122     sis\_pf.boot();
+123     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+124 
+125 
+126     \textcolor{comment}{/* Step 7 - Run the filter and wait until it is closed */}
+127     \textcolor{comment}{/* Note that since this is a simulation, the filter will end upon simulation termination */}
+128     std::cout << \textcolor{stringliteral}{"Running SIS particle filter..."} << std::flush;
+129     sis\_pf.run();
+130     std::cout << \textcolor{stringliteral}{"waiting..."} << std::flush;
+131     \textcolor{keywordflow}{if} (!sis\_pf.wait())
+132         \textcolor{keywordflow}{return} EXIT\_FAILURE;
+133     std::cout << \textcolor{stringliteral}{"completed!"} << std::endl;
+134 
+135 
+136     \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+137 \}
+\end{DoxyCodeInclude}
+ 
